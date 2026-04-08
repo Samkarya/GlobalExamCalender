@@ -1,0 +1,154 @@
+/* ─── List View ─── */
+.list-view {
+    max-width: 900px;
+}
+
+.list-group {
+    margin-bottom: 2rem;
+}
+
+.list-date-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.8rem;
+}
+
+.list-date-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    background: var(--surface2);
+    border: 1px solid var(--border2);
+    padding: 0.3rem 0.7rem;
+    border-radius: 6px;
+    color: var(--accent);
+    white-space: nowrap;
+}
+
+.list-date-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+}
+
+/* ─── Exam Card ─── */
+.exam-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    margin-bottom: 0.7rem;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+.exam-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--card-color, var(--accent));
+}
+
+.exam-card:hover {
+    border-color: var(--border2);
+    transform: translateX(2px);
+}
+
+.exam-card-flag {
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+}
+
+.exam-card-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.exam-card-name {
+    font-weight: 600;
+    font-size: 0.92rem;
+    margin-bottom: 0.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.exam-card-short {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    background: var(--surface2);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+}
+
+.exam-card-meta {
+    font-size: 0.78rem;
+    color: var(--muted);
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+}
+
+.exam-card-meta span {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+/* ─── Badges ─── */
+.event-type-badge {
+    padding: 0.28rem 0.7rem;
+    border-radius: 6px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+}
+
+.cat-badge {
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.tentative-label {
+    font-size: 0.65rem;
+    color: var(--amber);
+    text-align: center;
+    margin-top: 0.3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    justify-content: center;
+}
+
+/* ─── Empty State ─── */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 5rem 2rem;
+    color: var(--muted);
+    text-align: center;
+}
+
+.empty-state p {
+    font-size: 0.9rem;
+}

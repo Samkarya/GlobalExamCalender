@@ -1,0 +1,261 @@
+/* ─── Modal Overlay ─── */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s;
+}
+
+.modal-overlay.open {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* ─── Modal Container ─── */
+.modal {
+    background: var(--surface);
+    border: 1px solid var(--border2);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 560px;
+    max-height: 90vh;
+    overflow-y: auto;
+    transform: scale(0.95);
+    transition: transform 0.25s;
+    position: relative;
+}
+
+.modal-overlay.open .modal {
+    transform: scale(1);
+}
+
+/* ─── Modal Header ─── */
+.modal-header {
+    padding: 1.5rem 1.5rem 1rem;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: var(--surface);
+    z-index: 1;
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--surface2);
+    border: none;
+    color: var(--muted);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-close:hover {
+    background: var(--border2);
+    color: var(--text);
+}
+
+.modal-event-type {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+}
+
+.modal-tentative {
+    color: var(--amber);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+    margin-left: 0.4rem;
+}
+
+.modal-exam-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5rem;
+    margin-bottom: 0.3rem;
+}
+
+.modal-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* ─── Modal Body ─── */
+.modal-body {
+    padding: 1.2rem 1.5rem 1.5rem;
+}
+
+.modal-section-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 0.6rem;
+}
+
+/* ─── Timeline Dates ─── */
+.timeline-dates {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.2rem;
+}
+
+.td-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: 0.6rem 0.9rem;
+    border-radius: 8px;
+    font-size: 0.82rem;
+}
+
+.td-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.td-label {
+    flex: 1;
+}
+
+.td-type-label {
+    font-size: 0.68rem;
+    color: var(--muted);
+}
+
+.td-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--muted);
+}
+
+.td-tentative {
+    font-size: 0.65rem;
+    color: var(--amber);
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+/* ─── Info Grid ─── */
+.modal-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.7rem;
+    margin-bottom: 1.2rem;
+}
+
+.info-cell {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.6rem 0.8rem;
+}
+
+.info-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 0.2rem;
+}
+
+.info-val {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ─── Tags ─── */
+.tags-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-bottom: 1rem;
+}
+
+.tag-pill {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.72rem;
+    color: var(--muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+/* ─── Official Link ─── */
+.official-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--accent);
+    font-size: 0.82rem;
+    text-decoration: none;
+    border: 1px solid var(--border2);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    background: rgba(79, 142, 247, 0.08);
+    transition: all 0.2s;
+    margin-bottom: 0.8rem;
+}
+
+.official-link:hover {
+    background: rgba(79, 142, 247, 0.15);
+    border-color: var(--accent);
+}
+
+/* ─── Bookmark Button ─── */
+.bookmark-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    justify-content: center;
+    margin-top: 0.8rem;
+    transition: all 0.2s;
+    font-family: 'Outfit', sans-serif;
+}
+
+.bookmark-btn:hover {
+    border-color: var(--border2);
+}
+
+.bookmark-btn.saved {
+    background: rgba(245, 197, 66, 0.15);
+    border-color: var(--gold);
+    color: var(--gold);
+}

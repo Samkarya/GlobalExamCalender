@@ -1,0 +1,305 @@
+/* ─── Sidebar ─── */
+.sidebar {
+    width: 280px;
+    flex-shrink: 0;
+    border-right: 1px solid var(--border);
+    padding: 1.5rem;
+    background: var(--surface);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    overflow-y: auto;
+    max-height: calc(100vh - 64px);
+    position: sticky;
+    top: 64px;
+    transition: transform 0.3s ease;
+}
+
+.sidebar-overlay {
+    display: none;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sidebar-close-btn {
+    display: none;
+}
+
+.sidebar-section-title {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin-bottom: 0.6rem;
+}
+
+/* ─── Search ─── */
+.search-wrap {
+    position: relative;
+}
+
+.search-wrap input {
+    width: 100%;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.6rem 0.9rem 0.6rem 2.2rem;
+    border-radius: 8px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    outline: none;
+    transition: border 0.2s;
+}
+
+.search-wrap input:focus {
+    border-color: var(--accent);
+}
+
+.search-wrap input::placeholder {
+    color: var(--muted);
+}
+
+.search-icon {
+    position: absolute;
+    left: 0.7rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted);
+    pointer-events: none;
+}
+
+/* ─── Filter Chips ─── */
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.filter-chip {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.45rem 0.7rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.83rem;
+    transition: all 0.18s;
+    user-select: none;
+    border: 1px solid transparent;
+}
+
+.filter-chip:hover {
+    background: var(--surface2);
+}
+
+.filter-chip.selected {
+    background: var(--surface2);
+    border-color: var(--border2);
+}
+
+.filter-chip.selected .chip-dot {
+    box-shadow: 0 0 8px currentColor;
+}
+
+.chip-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.chip-count {
+    margin-left: auto;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    background: var(--border);
+    padding: 0.1rem 0.35rem;
+    border-radius: 4px;
+}
+
+/* ─── Flag Chips ─── */
+.flag-chip {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.4rem 0.6rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.83rem;
+    transition: all 0.18s;
+    border: 1px solid transparent;
+}
+
+.flag-chip:hover {
+    background: var(--surface2);
+}
+
+.flag-chip.selected {
+    background: var(--surface2);
+    border-color: var(--border2);
+}
+
+.flag-icon {
+    color: var(--accent);
+}
+
+/* ─── Active Filters ─── */
+.active-filters-section {
+    animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.active-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.active-tag {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: var(--surface2);
+    border: 1px solid var(--border2);
+    border-radius: 20px;
+    padding: 0.25rem 0.6rem;
+    font-size: 0.72rem;
+    color: var(--accent);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.active-tag:hover {
+    border-color: var(--rose);
+    color: var(--rose);
+}
+
+.clear-all-btn {
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 0.72rem;
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    padding: 0.2rem 0;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s;
+}
+
+.clear-all-btn:hover {
+    color: var(--rose);
+}
+
+/* ─── Date Range ─── */
+.date-range {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.date-range label {
+    font-size: 0.75rem;
+    color: var(--muted);
+}
+
+.date-range input {
+    width: 100%;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.5rem 0.7rem;
+    border-radius: 8px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.82rem;
+    outline: none;
+    color-scheme: dark;
+}
+
+.date-range input:focus {
+    border-color: var(--accent);
+}
+
+/* ─── Separator ─── */
+.separator {
+    height: 1px;
+    background: var(--border);
+}
+
+/* ─── Nav Button (shared) ─── */
+.nav-btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-btn:hover {
+    background: var(--surface2);
+    border-color: var(--border2);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 900px) {
+    .sidebar {
+        width: 240px;
+    }
+}
+
+@media (max-width: 700px) {
+    .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100vh;
+        z-index: 300;
+        background: var(--bg);
+        transform: translateX(-100%);
+        max-height: 100vh;
+        width: 280px;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+        box-shadow: 20px 0 50px rgba(0, 0, 0, 0.8);
+    }
+
+    .sidebar-close-btn {
+        display: flex;
+        width: 28px;
+        height: 28px;
+    }
+
+    .sidebar-overlay {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 299;
+    }
+}

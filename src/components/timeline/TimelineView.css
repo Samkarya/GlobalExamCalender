@@ -1,0 +1,58 @@
+/* ─── Timeline View ─── */
+.timeline-wrap {
+    position: relative;
+    padding-left: 2rem;
+    max-width: 900px;
+}
+
+.timeline-wrap::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent), var(--accent2), transparent);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 1rem;
+    animation: fadeInUp 0.4s ease both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 3px solid var(--bg);
+    z-index: 2;
+}
+
+.timeline-card {
+    margin-left: 0.5rem;
+}
+
+.tentative-inline {
+    font-size: 0.65rem;
+    color: var(--amber);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+}

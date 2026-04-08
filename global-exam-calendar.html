@@ -1,0 +1,1575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Global Exam Calendar</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0d14;
+    --surface: #111520;
+    --surface2: #161c2d;
+    --border: #1e2740;
+    --border2: #263050;
+    --text: #e8eaf2;
+    --muted: #6b7491;
+    --accent: #4f8ef7;
+    --accent2: #7c4fff;
+    --gold: #f5c542;
+    --emerald: #2dcc8f;
+    --rose: #f5506e;
+    --amber: #f7934c;
+    --sky: #38bdf8;
+
+    --cat-competitive: #f5506e;
+    --cat-entrance: #4f8ef7;
+    --cat-language: #2dcc8f;
+    --cat-professional: #f7934c;
+    --cat-academic: #a78bfa;
+
+    --type-registration_start: #2dcc8f;
+    --type-registration_end: #f5c542;
+    --type-admit_card: #4f8ef7;
+    --type-exam_date: #f5506e;
+    --type-result: #a78bfa;
+    --type-counselling: #f7934c;
+    --type-other: #6b7491;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ─── Background ─── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 10%, rgba(79,142,247,.07) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 20% 80%, rgba(124,79,255,.07) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ─── Header ─── */
+  header {
+    position: sticky; top: 0;
+    z-index: 100;
+    background: rgba(10,13,20,.85);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex; align-items: center; gap: 2rem;
+    height: 64px;
+  }
+
+  .logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.35rem;
+    color: var(--text);
+    display: flex; align-items: center; gap: .6rem;
+    white-space: nowrap;
+  }
+
+  .logo-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 12px var(--accent);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.6;transform:scale(.8)} }
+
+  .header-stats {
+    display: flex; align-items: center; gap: 1.5rem;
+    margin-left: auto;
+    font-size: .78rem;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+  }
+  .stat-pill {
+    display: flex; align-items: center; gap: .4rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: .25rem .7rem;
+    border-radius: 20px;
+  }
+  .stat-pill span { color: var(--text); font-weight: 500; }
+
+  /* ─── View Toggle ─── */
+  .view-toggle {
+    display: flex;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 3px;
+    gap: 2px;
+  }
+  .view-btn {
+    background: none; border: none;
+    color: var(--muted);
+    padding: .35rem .8rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: .8rem;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500;
+    transition: all .2s;
+    display: flex; align-items: center; gap: .4rem;
+  }
+  .view-btn.active { background: var(--border2); color: var(--text); }
+  .view-btn:hover:not(.active) { color: var(--text); }
+
+  /* ─── Layout ─── */
+  .app-shell {
+    display: flex;
+    position: relative;
+    z-index: 1;
+    min-height: calc(100vh - 64px);
+  }
+
+  /* ─── Sidebar ─── */
+  aside {
+    width: 280px;
+    flex-shrink: 0;
+    border-right: 1px solid var(--border);
+    padding: 1.5rem;
+    background: var(--surface);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    overflow-y: auto;
+    max-height: calc(100vh - 64px);
+    position: sticky;
+    top: 64px;
+  }
+
+  .sidebar-section-title {
+    font-size: .7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: var(--muted);
+    margin-bottom: .6rem;
+  }
+
+  /* Search */
+  .search-wrap { position: relative; }
+  .search-wrap input {
+    width: 100%;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: .6rem .9rem .6rem 2.2rem;
+    border-radius: 8px;
+    font-family: 'Outfit', sans-serif;
+    font-size: .85rem;
+    outline: none;
+    transition: border .2s;
+  }
+  .search-wrap input:focus { border-color: var(--accent); }
+  .search-wrap input::placeholder { color: var(--muted); }
+  .search-icon {
+    position: absolute; left: .7rem; top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted); font-size: .9rem;
+    pointer-events: none;
+  }
+
+  /* Filter groups */
+  .filter-group { display: flex; flex-direction: column; gap: .5rem; }
+
+  .filter-chip {
+    display: flex; align-items: center; gap: .55rem;
+    padding: .45rem .7rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: .83rem;
+    transition: all .18s;
+    user-select: none;
+    border: 1px solid transparent;
+  }
+  .filter-chip:hover { background: var(--surface2); }
+  .filter-chip.selected { background: var(--surface2); border-color: var(--border2); }
+  .filter-chip.selected .chip-dot { box-shadow: 0 0 8px currentColor; }
+
+  .chip-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .chip-count {
+    margin-left: auto;
+    font-family: 'DM Mono', monospace;
+    font-size: .7rem;
+    color: var(--muted);
+    background: var(--border);
+    padding: .1rem .35rem;
+    border-radius: 4px;
+  }
+
+  /* Country flags */
+  .flag-chip {
+    display: flex; align-items: center; gap: .6rem;
+    padding: .4rem .6rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: .83rem;
+    transition: all .18s;
+    border: 1px solid transparent;
+  }
+  .flag-chip:hover { background: var(--surface2); }
+  .flag-chip.selected { background: var(--surface2); border-color: var(--border2); }
+  .flag-chip .flag { font-size: 1.1rem; }
+
+  /* Active filters */
+  .active-filters {
+    display: flex; flex-wrap: wrap; gap: .4rem;
+  }
+  .active-tag {
+    display: flex; align-items: center; gap: .35rem;
+    background: var(--surface2);
+    border: 1px solid var(--border2);
+    border-radius: 20px;
+    padding: .25rem .6rem;
+    font-size: .75rem;
+    color: var(--accent);
+    cursor: pointer;
+  }
+  .active-tag:hover { border-color: var(--rose); color: var(--rose); }
+
+  .clear-all-btn {
+    background: none; border: none;
+    color: var(--muted);
+    font-size: .75rem;
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    padding: .2rem 0;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color .2s;
+  }
+  .clear-all-btn:hover { color: var(--rose); }
+
+  /* Date range picker */
+  .date-range { display: flex; flex-direction: column; gap: .5rem; }
+  .date-range label { font-size: .75rem; color: var(--muted); }
+  .date-range input {
+    width: 100%;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: .5rem .7rem;
+    border-radius: 8px;
+    font-family: 'Outfit', sans-serif;
+    font-size: .82rem;
+    outline: none;
+  }
+  .date-range input:focus { border-color: var(--accent); }
+  .date-range input::-webkit-calendar-picker-indicator { filter: invert(.6); }
+
+  /* ─── Main ─── */
+  main {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: auto;
+    min-width: 0;
+  }
+
+  /* ─── Month Nav ─── */
+  .month-nav {
+    display: flex; align-items: center; gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .month-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.8rem;
+    flex: 1;
+  }
+  .month-title em {
+    font-style: italic;
+    color: var(--muted);
+    font-size: 1.2rem;
+  }
+  .nav-btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all .2s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .nav-btn:hover { background: var(--surface2); border-color: var(--border2); }
+
+  .today-btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: .35rem .9rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: .8rem;
+    font-family: 'Outfit', sans-serif;
+    transition: all .2s;
+  }
+  .today-btn:hover { color: var(--text); border-color: var(--border2); }
+
+  /* ─── CALENDAR GRID VIEW ─── */
+  #view-calendar { display: block; }
+  #view-list { display: none; }
+  #view-timeline { display: none; }
+
+  .cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .cal-dow {
+    background: var(--surface);
+    text-align: center;
+    padding: .6rem;
+    font-size: .72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--muted);
+  }
+  .cal-dow.weekend { color: var(--accent); }
+
+  .cal-day {
+    background: var(--surface);
+    min-height: 120px;
+    padding: .5rem;
+    transition: background .15s;
+    position: relative;
+    cursor: default;
+  }
+  .cal-day:hover { background: var(--surface2); }
+  .cal-day.other-month { opacity: .35; }
+  .cal-day.today { background: rgba(79,142,247,.08); }
+  .cal-day.today .day-num { color: var(--accent); font-weight: 700; }
+  .cal-day.today::after {
+    content: '';
+    position: absolute; top: 6px; left: 6px;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 8px var(--accent);
+  }
+
+  .day-num {
+    font-family: 'DM Mono', monospace;
+    font-size: .78rem;
+    color: var(--muted);
+    margin-bottom: .3rem;
+  }
+
+  .event-pill {
+    display: flex; align-items: center; gap: .3rem;
+    padding: .2rem .4rem;
+    border-radius: 4px;
+    font-size: .68rem;
+    margin-bottom: 2px;
+    cursor: pointer;
+    transition: filter .15s;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .event-pill:hover { filter: brightness(1.3); }
+  .event-pill .ep-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+  .event-pill .ep-name { overflow: hidden; text-overflow: ellipsis; }
+
+  .more-events {
+    font-size: .65rem;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    cursor: pointer;
+    padding: .1rem .3rem;
+    border-radius: 3px;
+    transition: color .15s;
+  }
+  .more-events:hover { color: var(--accent); }
+
+  /* ─── LIST VIEW ─── */
+  .list-group { margin-bottom: 2rem; }
+  .list-date-header {
+    display: flex; align-items: center; gap: 1rem;
+    margin-bottom: .8rem;
+  }
+  .list-date-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: .75rem;
+    background: var(--surface2);
+    border: 1px solid var(--border2);
+    padding: .3rem .7rem;
+    border-radius: 6px;
+    color: var(--accent);
+  }
+  .list-date-line { flex: 1; height: 1px; background: var(--border); }
+
+  .exam-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    margin-bottom: .7rem;
+    display: flex; align-items: center; gap: 1.2rem;
+    cursor: pointer;
+    transition: all .2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .exam-card::before {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 3px;
+  }
+  .exam-card:hover { border-color: var(--border2); transform: translateX(2px); }
+
+  .exam-card-flag { font-size: 1.4rem; }
+
+  .exam-card-body { flex: 1; min-width: 0; }
+  .exam-card-name {
+    font-weight: 600;
+    font-size: .92rem;
+    margin-bottom: .2rem;
+    display: flex; align-items: center; gap: .5rem;
+  }
+  .exam-card-short {
+    font-family: 'DM Mono', monospace;
+    font-size: .72rem;
+    color: var(--muted);
+    background: var(--surface2);
+    padding: .1rem .4rem;
+    border-radius: 4px;
+  }
+  .exam-card-meta {
+    font-size: .78rem;
+    color: var(--muted);
+    display: flex; gap: .8rem; flex-wrap: wrap;
+  }
+  .exam-card-meta span { display: flex; align-items: center; gap: .3rem; }
+
+  .event-type-badge {
+    padding: .28rem .7rem;
+    border-radius: 6px;
+    font-size: .72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    white-space: nowrap;
+  }
+
+  .cat-badge {
+    padding: .2rem .6rem;
+    border-radius: 20px;
+    font-size: .68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+  }
+
+  /* ─── TIMELINE VIEW ─── */
+  .timeline-wrap {
+    position: relative;
+    padding-left: 2rem;
+  }
+  .timeline-wrap::before {
+    content: '';
+    position: absolute; left: 8px; top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent), var(--accent2), transparent);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 1rem;
+    animation: fadeInUp .4s ease both;
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .timeline-dot {
+    position: absolute; left: -2rem;
+    top: 50%; transform: translateY(-50%);
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    border: 3px solid var(--bg);
+    z-index: 2;
+  }
+
+  /* ─── MODAL ─── */
+  .modal-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,.7);
+    backdrop-filter: blur(6px);
+    z-index: 200;
+    display: flex; align-items: center; justify-content: center;
+    padding: 1rem;
+    opacity: 0; pointer-events: none;
+    transition: opacity .25s;
+  }
+  .modal-overlay.open { opacity: 1; pointer-events: all; }
+
+  .modal {
+    background: var(--surface);
+    border: 1px solid var(--border2);
+    border-radius: 16px;
+    width: 100%; max-width: 560px;
+    max-height: 90vh;
+    overflow-y: auto;
+    transform: scale(.95);
+    transition: transform .25s;
+    position: relative;
+  }
+  .modal-overlay.open .modal { transform: scale(1); }
+
+  .modal-header {
+    padding: 1.5rem 1.5rem 1rem;
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 0;
+    background: var(--surface);
+    z-index: 1;
+  }
+
+  .modal-close {
+    position: absolute; top: 1rem; right: 1rem;
+    background: var(--surface2); border: none;
+    color: var(--muted); width: 30px; height: 30px;
+    border-radius: 50%; cursor: pointer;
+    font-size: 1rem; transition: all .2s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .modal-close:hover { background: var(--border2); color: var(--text); }
+
+  .modal-body { padding: 1.2rem 1.5rem 1.5rem; }
+
+  .modal-exam-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5rem;
+    margin-bottom: .3rem;
+  }
+
+  .modal-meta { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.2rem; }
+
+  .timeline-dates { display: flex; flex-direction: column; gap: .5rem; margin-bottom: 1.2rem; }
+  .td-item {
+    display: flex; align-items: center; gap: .8rem;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: .6rem .9rem;
+    border-radius: 8px;
+    font-size: .82rem;
+  }
+  .td-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .td-label { flex: 1; }
+  .td-date { font-family: 'DM Mono', monospace; font-size: .78rem; color: var(--muted); }
+  .td-tentative { font-size: .65rem; color: var(--amber); margin-left: .4rem; }
+
+  .modal-info-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: .7rem; margin-bottom: 1.2rem;
+  }
+  .info-cell {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: .6rem .8rem;
+  }
+  .info-label { font-size: .68rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: .2rem; }
+  .info-val { font-size: .85rem; font-weight: 500; }
+
+  .tags-wrap { display: flex; flex-wrap: wrap; gap: .35rem; }
+  .tag-pill {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: .2rem .6rem;
+    font-size: .72rem;
+    color: var(--muted);
+  }
+
+  .official-link {
+    display: inline-flex; align-items: center; gap: .4rem;
+    color: var(--accent);
+    font-size: .82rem;
+    text-decoration: none;
+    border: 1px solid var(--border2);
+    padding: .5rem 1rem;
+    border-radius: 8px;
+    background: rgba(79,142,247,.08);
+    transition: all .2s;
+    margin-top: .8rem;
+  }
+  .official-link:hover { background: rgba(79,142,247,.15); border-color: var(--accent); }
+
+  /* ─── Empty State ─── */
+  .empty-state {
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; gap: 1rem;
+    padding: 5rem 2rem;
+    color: var(--muted);
+    text-align: center;
+  }
+  .empty-state .empty-icon { font-size: 3rem; opacity: .5; }
+  .empty-state p { font-size: .9rem; }
+
+  /* ─── Results bar ─── */
+  .results-bar {
+    display: flex; align-items: center; gap: .8rem;
+    margin-bottom: 1.2rem;
+    font-size: .82rem;
+    color: var(--muted);
+  }
+  .results-count { color: var(--text); font-weight: 600; font-family: 'DM Mono', monospace; }
+
+  /* ─── Utilities ─── */
+  .separator { height: 1px; background: var(--border); }
+
+  hr { border: none; border-top: 1px solid var(--border); }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 900px) {
+    aside { width: 240px; }
+    .cal-day { min-height: 80px; }
+  }
+  @media (max-width: 700px) {
+    .app-shell { flex-direction: column; }
+    aside { width: 100%; max-height: none; position: static; }
+    .cal-day { min-height: 55px; }
+    .header-stats { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── HEADER ─── -->
+<header>
+  <div class="logo">
+    <div class="logo-dot"></div>
+    Global Exam <em style="font-style:italic;margin-left:.2rem">Calendar</em>
+  </div>
+
+  <div class="view-toggle">
+    <button class="view-btn active" onclick="setView('calendar')" id="btn-calendar">
+      ⬛ Calendar
+    </button>
+    <button class="view-btn" onclick="setView('list')" id="btn-list">
+      ☰ List
+    </button>
+    <button class="view-btn" onclick="setView('timeline')" id="btn-timeline">
+      ◈ Timeline
+    </button>
+  </div>
+
+  <div class="header-stats">
+    <div class="stat-pill">🌍 <span id="stat-countries">0</span> countries</div>
+    <div class="stat-pill">📋 <span id="stat-exams">0</span> exams</div>
+    <div class="stat-pill">📅 <span id="stat-events">0</span> events</div>
+  </div>
+</header>
+
+<!-- ─── APP SHELL ─── -->
+<div class="app-shell">
+
+  <!-- ─── SIDEBAR ─── -->
+  <aside>
+
+    <!-- Search -->
+    <div>
+      <div class="sidebar-section-title">Search</div>
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="search-input" placeholder="Search exams…" oninput="applyFilters()">
+      </div>
+    </div>
+
+    <!-- Active Filters -->
+    <div id="active-filters-section" style="display:none">
+      <div class="sidebar-section-title" style="display:flex;justify-content:space-between;align-items:center">
+        Active filters
+        <button class="clear-all-btn" onclick="clearAll()">clear all</button>
+      </div>
+      <div class="active-filters" id="active-filters-wrap"></div>
+    </div>
+
+    <div class="separator"></div>
+
+    <!-- Country -->
+    <div>
+      <div class="sidebar-section-title">Country / Region</div>
+      <div class="filter-group" id="country-filters"></div>
+    </div>
+
+    <div class="separator"></div>
+
+    <!-- Category -->
+    <div>
+      <div class="sidebar-section-title">Category</div>
+      <div class="filter-group" id="category-filters"></div>
+    </div>
+
+    <div class="separator"></div>
+
+    <!-- Event Type -->
+    <div>
+      <div class="sidebar-section-title">Event Type</div>
+      <div class="filter-group" id="eventtype-filters"></div>
+    </div>
+
+    <div class="separator"></div>
+
+    <!-- Frequency -->
+    <div>
+      <div class="sidebar-section-title">Frequency</div>
+      <div class="filter-group" id="frequency-filters"></div>
+    </div>
+
+    <div class="separator"></div>
+
+    <!-- Date Range -->
+    <div>
+      <div class="sidebar-section-title">Date Range</div>
+      <div class="date-range">
+        <label>From</label>
+        <input type="date" id="date-from" onchange="applyFilters()">
+        <label>To</label>
+        <input type="date" id="date-to" onchange="applyFilters()">
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- ─── MAIN ─── -->
+  <main>
+
+    <!-- Month Nav (for Calendar view) -->
+    <div class="month-nav">
+      <button class="nav-btn" onclick="prevPeriod()">←</button>
+      <button class="nav-btn" onclick="nextPeriod()">→</button>
+      <div class="month-title" id="period-title">April <em>2026</em></div>
+      <button class="today-btn" onclick="goToday()">Today</button>
+    </div>
+
+    <!-- Results bar -->
+    <div class="results-bar">
+      <span class="results-count" id="results-count">—</span>
+      <span>events visible</span>
+    </div>
+
+    <!-- ─── CALENDAR VIEW ─── -->
+    <div id="view-calendar">
+      <div class="cal-grid" id="cal-grid"></div>
+    </div>
+
+    <!-- ─── LIST VIEW ─── -->
+    <div id="view-list"></div>
+
+    <!-- ─── TIMELINE VIEW ─── -->
+    <div id="view-timeline">
+      <div class="timeline-wrap" id="timeline-wrap"></div>
+    </div>
+
+  </main>
+</div>
+
+<!-- ─── MODAL ─── -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <button class="modal-close" onclick="closeModalDirect()">✕</button>
+      <div style="font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.4rem" id="modal-eventtype"></div>
+      <div class="modal-exam-name" id="modal-name"></div>
+      <div class="modal-meta" id="modal-meta"></div>
+    </div>
+    <div class="modal-body">
+      <div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.6rem">All Dates</div>
+      <div class="timeline-dates" id="modal-dates"></div>
+      <div class="modal-info-grid" id="modal-info"></div>
+      <div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.5rem">Tags</div>
+      <div class="tags-wrap" id="modal-tags"></div>
+      <div id="modal-link"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════
+   SAMPLE JSON DATA
+═══════════════════════════════════════════ */
+const EXAMS = [
+  {
+    id: "upsc-cse-2026",
+    name: "Union Public Service Commission Civil Services Examination",
+    short_name: "UPSC CSE",
+    country: "India",
+    flag: "🇮🇳",
+    region: "Asia",
+    category: "competitive",
+    conducting_body: "Union Public Service Commission",
+    frequency: "annual",
+    official_url: "https://upsc.gov.in",
+    tags: ["government","civil services","ias","ips"],
+    eligibility: "Indian citizen, Graduate degree, Age 21-32",
+    dates: [
+      { type:"registration_start", date:"2026-02-01", label:"Notification Released" },
+      { type:"registration_end",   date:"2026-02-21", label:"Last Date to Apply" },
+      { type:"admit_card",         date:"2026-04-25", label:"Admit Card Download" },
+      { type:"exam_date",          date:"2026-05-24", label:"Prelims Exam" },
+      { type:"result",             date:"2026-07-15", label:"Prelims Result", tentative:true },
+      { type:"exam_date",          date:"2026-09-20", label:"Mains Exam", tentative:true },
+      { type:"result",             date:"2027-04-01", label:"Final Result", tentative:true }
+    ]
+  },
+  {
+    id: "jee-main-2026",
+    name: "Joint Entrance Examination Main",
+    short_name: "JEE Main",
+    country: "India",
+    flag: "🇮🇳",
+    region: "Asia",
+    category: "entrance",
+    conducting_body: "National Testing Agency",
+    frequency: "biannual",
+    official_url: "https://jeemain.nta.ac.in",
+    tags: ["engineering","iit","nit","b.tech"],
+    eligibility: "Class 12 pass, PCM, Age ≤25",
+    dates: [
+      { type:"registration_start", date:"2026-03-01", label:"Session 1 Registration Opens" },
+      { type:"registration_end",   date:"2026-03-31", label:"Session 1 Registration Closes" },
+      { type:"admit_card",         date:"2026-04-15", label:"Admit Card – Session 1" },
+      { type:"exam_date",          date:"2026-04-22", label:"JEE Main Session 1" },
+      { type:"result",             date:"2026-05-10", label:"Session 1 Result" },
+      { type:"exam_date",          date:"2026-07-15", label:"JEE Main Session 2", tentative:true },
+      { type:"result",             date:"2026-08-01", label:"Session 2 Result", tentative:true }
+    ]
+  },
+  {
+    id: "neet-ug-2026",
+    name: "National Eligibility cum Entrance Test (UG)",
+    short_name: "NEET UG",
+    country: "India",
+    flag: "🇮🇳",
+    region: "Asia",
+    category: "entrance",
+    conducting_body: "National Testing Agency",
+    frequency: "annual",
+    official_url: "https://neet.nta.nic.in",
+    tags: ["medical","mbbs","bds","healthcare"],
+    eligibility: "Class 12 pass, PCB, Age ≥17",
+    dates: [
+      { type:"registration_start", date:"2026-03-10", label:"Registration Opens" },
+      { type:"registration_end",   date:"2026-04-05", label:"Registration Closes" },
+      { type:"admit_card",         date:"2026-05-01", label:"Admit Card Release" },
+      { type:"exam_date",          date:"2026-05-17", label:"NEET UG Exam Day" },
+      { type:"result",             date:"2026-06-14", label:"Result Declaration" },
+      { type:"counselling",        date:"2026-07-01", label:"Counselling Begins" }
+    ]
+  },
+  {
+    id: "sat-2026",
+    name: "Scholastic Assessment Test",
+    short_name: "SAT",
+    country: "USA",
+    flag: "🇺🇸",
+    region: "Americas",
+    category: "entrance",
+    conducting_body: "College Board",
+    frequency: "monthly",
+    official_url: "https://collegeboard.org",
+    tags: ["university","undergraduate","college","usa"],
+    eligibility: "High school students",
+    dates: [
+      { type:"exam_date", date:"2026-03-14", label:"SAT March 2026" },
+      { type:"result",    date:"2026-03-28", label:"March Scores Released" },
+      { type:"exam_date", date:"2026-05-02", label:"SAT May 2026" },
+      { type:"result",    date:"2026-05-16", label:"May Scores Released" },
+      { type:"exam_date", date:"2026-06-06", label:"SAT June 2026" },
+      { type:"result",    date:"2026-06-20", label:"June Scores Released" },
+      { type:"exam_date", date:"2026-08-29", label:"SAT August 2026", tentative:true }
+    ]
+  },
+  {
+    id: "gre-general-2026",
+    name: "Graduate Record Examinations General Test",
+    short_name: "GRE",
+    country: "Global",
+    flag: "🌍",
+    region: "Global",
+    category: "entrance",
+    conducting_body: "ETS",
+    frequency: "monthly",
+    official_url: "https://ets.org/gre",
+    tags: ["graduate","ms","phd","usa","global"],
+    eligibility: "Bachelor's degree",
+    dates: [
+      { type:"exam_date", date:"2026-04-10", label:"GRE Test Day (CBT)" },
+      { type:"exam_date", date:"2026-05-15", label:"GRE Test Day (CBT)" },
+      { type:"exam_date", date:"2026-06-20", label:"GRE Test Day (CBT)" }
+    ]
+  },
+  {
+    id: "gmat-2026",
+    name: "Graduate Management Admission Test",
+    short_name: "GMAT",
+    country: "Global",
+    flag: "🌍",
+    region: "Global",
+    category: "entrance",
+    conducting_body: "GMAC",
+    frequency: "monthly",
+    official_url: "https://mba.com/gmat",
+    tags: ["mba","business","management","global"],
+    eligibility: "Bachelor's degree",
+    dates: [
+      { type:"exam_date", date:"2026-04-08", label:"GMAT Focus Edition" },
+      { type:"exam_date", date:"2026-05-06", label:"GMAT Focus Edition" },
+      { type:"exam_date", date:"2026-06-03", label:"GMAT Focus Edition" }
+    ]
+  },
+  {
+    id: "ielts-2026",
+    name: "International English Language Testing System",
+    short_name: "IELTS",
+    country: "Global",
+    flag: "🌍",
+    region: "Global",
+    category: "language",
+    conducting_body: "British Council / IDP / Cambridge",
+    frequency: "monthly",
+    official_url: "https://ielts.org",
+    tags: ["english","language","immigration","study abroad"],
+    eligibility: "Any candidate",
+    dates: [
+      { type:"exam_date", date:"2026-04-11", label:"IELTS Academic — April" },
+      { type:"exam_date", date:"2026-04-25", label:"IELTS General — April" },
+      { type:"exam_date", date:"2026-05-09", label:"IELTS Academic — May" },
+      { type:"exam_date", date:"2026-05-23", label:"IELTS General — May" },
+      { type:"exam_date", date:"2026-06-13", label:"IELTS Academic — June" }
+    ]
+  },
+  {
+    id: "toefl-2026",
+    name: "Test of English as a Foreign Language",
+    short_name: "TOEFL iBT",
+    country: "Global",
+    flag: "🌍",
+    region: "Global",
+    category: "language",
+    conducting_body: "ETS",
+    frequency: "monthly",
+    official_url: "https://ets.org/toefl",
+    tags: ["english","language","usa","immigration"],
+    eligibility: "Any candidate",
+    dates: [
+      { type:"exam_date", date:"2026-04-18", label:"TOEFL iBT Test Day" },
+      { type:"exam_date", date:"2026-05-16", label:"TOEFL iBT Test Day" },
+      { type:"exam_date", date:"2026-06-20", label:"TOEFL iBT Test Day" }
+    ]
+  },
+  {
+    id: "gaokao-2026",
+    name: "National College Entrance Examination",
+    short_name: "Gaokao",
+    country: "China",
+    flag: "🇨🇳",
+    region: "Asia",
+    category: "entrance",
+    conducting_body: "Ministry of Education China",
+    frequency: "annual",
+    official_url: "https://www.moe.gov.cn",
+    tags: ["university","china","undergraduate","national"],
+    eligibility: "High school graduates in China",
+    dates: [
+      { type:"registration_start", date:"2026-03-01", label:"Candidate Registration" },
+      { type:"registration_end",   date:"2026-03-31", label:"Registration Closes" },
+      { type:"admit_card",         date:"2026-05-25", label:"Admit Card" },
+      { type:"exam_date",          date:"2026-06-07", label:"Gaokao Day 1" },
+      { type:"exam_date",          date:"2026-06-08", label:"Gaokao Day 2" },
+      { type:"result",             date:"2026-06-23", label:"Results Published" }
+    ]
+  },
+  {
+    id: "bar-exam-usa-2026",
+    name: "Uniform Bar Examination",
+    short_name: "UBE",
+    country: "USA",
+    flag: "🇺🇸",
+    region: "Americas",
+    category: "professional",
+    conducting_body: "National Conference of Bar Examiners",
+    frequency: "biannual",
+    official_url: "https://ncbex.org",
+    tags: ["law","legal","bar","lawyer"],
+    eligibility: "Law school graduate, JD degree",
+    dates: [
+      { type:"exam_date", date:"2026-07-28", label:"UBE July Session Day 1" },
+      { type:"exam_date", date:"2026-07-29", label:"UBE July Session Day 2" },
+      { type:"result",    date:"2026-10-15", label:"July Results", tentative:true }
+    ]
+  },
+  {
+    id: "cfa-level1-2026",
+    name: "Chartered Financial Analyst Level I",
+    short_name: "CFA L1",
+    country: "Global",
+    flag: "🌍",
+    region: "Global",
+    category: "professional",
+    conducting_body: "CFA Institute",
+    frequency: "quarterly",
+    official_url: "https://cfainstitute.org",
+    tags: ["finance","investment","accounting","cfa"],
+    eligibility: "Bachelor's degree or final year",
+    dates: [
+      { type:"registration_start", date:"2026-04-01", label:"Feb Window Registration Opens" },
+      { type:"exam_date",          date:"2026-05-19", label:"CFA Level I — May Window" },
+      { type:"result",             date:"2026-06-30", label:"May Results" },
+      { type:"exam_date",          date:"2026-08-18", label:"CFA Level I — Aug Window", tentative:true }
+    ]
+  },
+  {
+    id: "cat-2026",
+    name: "Common Admission Test",
+    short_name: "CAT",
+    country: "India",
+    flag: "🇮🇳",
+    region: "Asia",
+    category: "entrance",
+    conducting_body: "IIMs",
+    frequency: "annual",
+    official_url: "https://iimcat.ac.in",
+    tags: ["mba","iim","management","business"],
+    eligibility: "Graduate degree with 50% marks",
+    dates: [
+      { type:"registration_start", date:"2026-08-01", label:"CAT 2026 Registration Opens" },
+      { type:"registration_end",   date:"2026-09-15", label:"Registration Closes" },
+      { type:"admit_card",         date:"2026-10-28", label:"Admit Card Release" },
+      { type:"exam_date",          date:"2026-11-22", label:"CAT 2026 Exam" },
+      { type:"result",             date:"2027-01-10", label:"Result Declaration", tentative:true }
+    ]
+  },
+  {
+    id: "gate-2026",
+    name: "Graduate Aptitude Test in Engineering",
+    short_name: "GATE",
+    country: "India",
+    flag: "🇮🇳",
+    region: "Asia",
+    category: "entrance",
+    conducting_body: "IIT Delhi (2026)",
+    frequency: "annual",
+    official_url: "https://gate2026.iitd.ac.in",
+    tags: ["engineering","psu","m.tech","research"],
+    eligibility: "B.E/B.Tech/M.Sc or final year",
+    dates: [
+      { type:"registration_start", date:"2025-09-01", label:"Application Opens" },
+      { type:"registration_end",   date:"2025-10-10", label:"Application Closes" },
+      { type:"admit_card",         date:"2026-01-10", label:"Admit Card Download" },
+      { type:"exam_date",          date:"2026-02-01", label:"GATE 2026 (Paper 1)" },
+      { type:"exam_date",          date:"2026-02-02", label:"GATE 2026 (Paper 2)" },
+      { type:"result",             date:"2026-03-19", label:"Result Announced" }
+    ]
+  },
+  {
+    id: "jlpt-2026",
+    name: "Japanese Language Proficiency Test",
+    short_name: "JLPT",
+    country: "Japan",
+    flag: "🇯🇵",
+    region: "Asia",
+    category: "language",
+    conducting_body: "Japan Foundation & JEES",
+    frequency: "biannual",
+    official_url: "https://jlpt.jp",
+    tags: ["japanese","language","japan","n1","n2"],
+    eligibility: "Open to all",
+    dates: [
+      { type:"registration_start", date:"2026-03-15", label:"July Session Registration" },
+      { type:"registration_end",   date:"2026-04-15", label:"Registration Ends" },
+      { type:"exam_date",          date:"2026-07-05", label:"JLPT July Session" },
+      { type:"result",             date:"2026-09-01", label:"July Results" },
+      { type:"exam_date",          date:"2026-12-06", label:"JLPT December Session" }
+    ]
+  },
+  {
+    id: "delf-2026",
+    name: "Diplôme d'Études en Langue Française",
+    short_name: "DELF/DALF",
+    country: "France",
+    flag: "🇫🇷",
+    region: "Europe",
+    category: "language",
+    conducting_body: "France Éducation International",
+    frequency: "biannual",
+    official_url: "https://delfdalf.fr",
+    tags: ["french","language","france","europe"],
+    eligibility: "Open to all",
+    dates: [
+      { type:"exam_date", date:"2026-03-21", label:"DELF Spring Session" },
+      { type:"result",    date:"2026-04-30", label:"Spring Results" },
+      { type:"exam_date", date:"2026-10-17", label:"DELF Autumn Session" }
+    ]
+  },
+  {
+    id: "lsat-2026",
+    name: "Law School Admission Test",
+    short_name: "LSAT",
+    country: "USA",
+    flag: "🇺🇸",
+    region: "Americas",
+    category: "entrance",
+    conducting_body: "Law School Admission Council",
+    frequency: "quarterly",
+    official_url: "https://lsac.org",
+    tags: ["law","school","usa","llb"],
+    eligibility: "Bachelor's degree",
+    dates: [
+      { type:"exam_date", date:"2026-04-04", label:"LSAT April 2026" },
+      { type:"result",    date:"2026-04-25", label:"April Scores" },
+      { type:"exam_date", date:"2026-06-06", label:"LSAT June 2026" },
+      { type:"result",    date:"2026-06-27", label:"June Scores" }
+    ]
+  }
+];
+
+/* ═══════════════════════════════════════════
+   STATE
+═══════════════════════════════════════════ */
+let currentView = 'calendar';
+let currentDate = new Date(2026, 3, 1); // April 2026
+let filters = { countries: new Set(), categories: new Set(), eventTypes: new Set(), frequencies: new Set() };
+let filteredEvents = [];
+
+/* ═══════════════════════════════════════════
+   HELPERS
+═══════════════════════════════════════════ */
+const CAT_COLORS = { competitive:'var(--cat-competitive)', entrance:'var(--cat-entrance)', language:'var(--cat-language)', professional:'var(--cat-professional)', academic:'var(--cat-academic)' };
+const TYPE_COLORS = { registration_start:'var(--type-registration_start)', registration_end:'var(--type-registration_end)', admit_card:'var(--type-admit_card)', exam_date:'var(--type-exam_date)', result:'var(--type-result)', counselling:'var(--type-counselling)', other:'var(--type-other)' };
+const TYPE_LABELS = { registration_start:'Registration Opens', registration_end:'Registration Closes', admit_card:'Admit Card', exam_date:'Exam Day', result:'Result', counselling:'Counselling', other:'Other' };
+const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const FLAGS = { India:'🇮🇳', USA:'🇺🇸', China:'🇨🇳', Japan:'🇯🇵', France:'🇫🇷', UK:'🇬🇧', Germany:'🇩🇪', Global:'🌍' };
+
+function parseDate(str) { const [y,m,d] = str.split('-').map(Number); return new Date(y,m-1,d); }
+function fmtDate(str) { const d = parseDate(str); return d.toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'}); }
+function isSameDay(a,b) { return a.getFullYear()===b.getFullYear()&&a.getMonth()===b.getMonth()&&a.getDate()===b.getDate(); }
+function dateKey(d) { return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
+
+/* flatten to events */
+function getAllEvents(examList) {
+  const evs = [];
+  examList.forEach(ex => {
+    ex.dates.forEach(dt => {
+      evs.push({ ...dt, exam: ex });
+    });
+  });
+  return evs;
+}
+
+/* ═══════════════════════════════════════════
+   FILTERS
+═══════════════════════════════════════════ */
+function buildFilterUI() {
+  const countries = [...new Set(EXAMS.map(e=>e.country))].sort();
+  const categories = [...new Set(EXAMS.map(e=>e.category))].sort();
+  const eventTypes = [...new Set(EXAMS.flatMap(e=>e.dates.map(d=>d.type)))].sort();
+  const frequencies = [...new Set(EXAMS.map(e=>e.frequency))].sort();
+
+  function countryCount(c) { return EXAMS.filter(e=>e.country===c).length; }
+  function catCount(c) { return EXAMS.filter(e=>e.category===c).length; }
+  function typeCount(t) { return EXAMS.flatMap(e=>e.dates).filter(d=>d.type===t).length; }
+  function freqCount(f) { return EXAMS.filter(e=>e.frequency===f).length; }
+
+  document.getElementById('country-filters').innerHTML = countries.map(c => `
+    <div class="flag-chip" id="fc-${c}" onclick="toggleFilter('countries','${c}')">
+      <span class="flag">${FLAGS[c]||'🌐'}</span>
+      <span>${c}</span>
+      <span class="chip-count" style="margin-left:auto">${countryCount(c)}</span>
+    </div>`).join('');
+
+  document.getElementById('category-filters').innerHTML = categories.map(c => `
+    <div class="filter-chip" id="fc-cat-${c}" onclick="toggleFilter('categories','${c}')">
+      <div class="chip-dot" style="background:${CAT_COLORS[c]};color:${CAT_COLORS[c]}"></div>
+      <span style="text-transform:capitalize">${c}</span>
+      <span class="chip-count">${catCount(c)}</span>
+    </div>`).join('');
+
+  document.getElementById('eventtype-filters').innerHTML = eventTypes.map(t => `
+    <div class="filter-chip" id="fc-type-${t}" onclick="toggleFilter('eventTypes','${t}')">
+      <div class="chip-dot" style="background:${TYPE_COLORS[t]};color:${TYPE_COLORS[t]}"></div>
+      <span>${TYPE_LABELS[t]||t}</span>
+      <span class="chip-count">${typeCount(t)}</span>
+    </div>`).join('');
+
+  document.getElementById('frequency-filters').innerHTML = frequencies.map(f => `
+    <div class="filter-chip" id="fc-freq-${f}" onclick="toggleFilter('frequencies','${f}')">
+      <div class="chip-dot" style="background:var(--accent)"></div>
+      <span style="text-transform:capitalize">${f}</span>
+      <span class="chip-count">${freqCount(f)}</span>
+    </div>`).join('');
+
+  // Stats
+  const allEvents = getAllEvents(EXAMS);
+  document.getElementById('stat-countries').textContent = countries.length;
+  document.getElementById('stat-exams').textContent = EXAMS.length;
+  document.getElementById('stat-events').textContent = allEvents.length;
+}
+
+function toggleFilter(group, val) {
+  if (filters[group].has(val)) filters[group].delete(val);
+  else filters[group].add(val);
+  // Update chip UI
+  const idMap = { countries:'fc-', categories:'fc-cat-', eventTypes:'fc-type-', frequencies:'fc-freq-' };
+  const el = document.getElementById(idMap[group]+val);
+  if (el) el.classList.toggle('selected', filters[group].has(val));
+  applyFilters();
+}
+
+function clearAll() {
+  ['countries','categories','eventTypes','frequencies'].forEach(g => {
+    filters[g].clear();
+    document.querySelectorAll(`[id^="fc-"]`).forEach(el=>el.classList.remove('selected'));
+  });
+  document.getElementById('search-input').value = '';
+  document.getElementById('date-from').value = '';
+  document.getElementById('date-to').value = '';
+  applyFilters();
+}
+
+function getFilteredExams() {
+  const q = document.getElementById('search-input').value.toLowerCase();
+  const from = document.getElementById('date-from').value;
+  const to = document.getElementById('date-to').value;
+
+  return EXAMS.filter(ex => {
+    if (filters.countries.size && !filters.countries.has(ex.country)) return false;
+    if (filters.categories.size && !filters.categories.has(ex.category)) return false;
+    if (filters.frequencies.size && !filters.frequencies.has(ex.frequency)) return false;
+    if (q && !ex.name.toLowerCase().includes(q) && !ex.short_name.toLowerCase().includes(q) && !ex.tags.some(t=>t.includes(q))) return false;
+    return true;
+  });
+}
+
+function getFilteredEvents(exams) {
+  const from = document.getElementById('date-from').value;
+  const to = document.getElementById('date-to').value;
+  let evs = getAllEvents(exams);
+  if (filters.eventTypes.size) evs = evs.filter(e => filters.eventTypes.has(e.type));
+  if (from) evs = evs.filter(e => e.date >= from);
+  if (to) evs = evs.filter(e => e.date <= to);
+  evs.sort((a,b) => a.date.localeCompare(b.date));
+  return evs;
+}
+
+function updateActiveFilters() {
+  const wrap = document.getElementById('active-filters-wrap');
+  const section = document.getElementById('active-filters-section');
+  const tags = [];
+  filters.countries.forEach(v=>tags.push({group:'countries',val:v,label:`🌍 ${v}`}));
+  filters.categories.forEach(v=>tags.push({group:'categories',val:v,label:`📋 ${v}`}));
+  filters.eventTypes.forEach(v=>tags.push({group:'eventTypes',val:v,label:`📅 ${TYPE_LABELS[v]}`}));
+  filters.frequencies.forEach(v=>tags.push({group:'frequencies',val:v,label:`🔁 ${v}`}));
+  if (tags.length) {
+    section.style.display='block';
+    wrap.innerHTML = tags.map(t=>`<div class="active-tag" onclick="toggleFilter('${t.group}','${t.val}')">${t.label} ×</div>`).join('');
+  } else { section.style.display='none'; wrap.innerHTML=''; }
+}
+
+function applyFilters() {
+  updateActiveFilters();
+  const exams = getFilteredExams();
+  filteredEvents = getFilteredEvents(exams);
+  document.getElementById('results-count').textContent = filteredEvents.length;
+  renderCurrentView();
+}
+
+/* ═══════════════════════════════════════════
+   VIEW MANAGEMENT
+═══════════════════════════════════════════ */
+function setView(v) {
+  currentView = v;
+  ['calendar','list','timeline'].forEach(x => {
+    document.getElementById('view-'+x).style.display = x===v ? 'block' : 'none';
+    document.getElementById('btn-'+x).classList.toggle('active', x===v);
+  });
+  renderCurrentView();
+}
+
+function renderCurrentView() {
+  if (currentView==='calendar') renderCalendar();
+  else if (currentView==='list') renderList();
+  else renderTimeline();
+}
+
+/* ═══════════════════════════════════════════
+   CALENDAR RENDER
+═══════════════════════════════════════════ */
+function renderCalendar() {
+  const y = currentDate.getFullYear(), m = currentDate.getMonth();
+  document.getElementById('period-title').innerHTML = `${MONTHS[m]} <em>${y}</em>`;
+
+  const firstDay = new Date(y,m,1).getDay();
+  const daysInMonth = new Date(y,m+1,0).getDate();
+  const daysInPrev = new Date(y,m,0).getDate();
+  const today = new Date();
+
+  // Build day→events map for month
+  const evMap = {};
+  filteredEvents.forEach(ev => {
+    const d = parseDate(ev.date);
+    if (d.getFullYear()===y && d.getMonth()===m) {
+      const k = d.getDate();
+      if (!evMap[k]) evMap[k] = [];
+      evMap[k].push(ev);
+    }
+  });
+
+  let html = '';
+  const dows = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  html += dows.map((d,i)=>`<div class="cal-dow${i===0||i===6?' weekend':''}">${d}</div>`).join('');
+
+  // Prev month padding
+  for (let i=0; i<firstDay; i++) {
+    const dn = daysInPrev - firstDay + 1 + i;
+    html += `<div class="cal-day other-month"><div class="day-num">${dn}</div></div>`;
+  }
+
+  // Current month days
+  for (let d=1; d<=daysInMonth; d++) {
+    const isToday = today.getFullYear()===y && today.getMonth()===m && today.getDate()===d;
+    const evs = evMap[d] || [];
+    const show = evs.slice(0,3);
+    const more = evs.length - show.length;
+    html += `<div class="cal-day${isToday?' today':''}">
+      <div class="day-num">${d}</div>
+      ${show.map(ev=>`
+        <div class="event-pill" onclick='openModal(${JSON.stringify(ev.exam.id)}, ${JSON.stringify(ev)})' style="background:${TYPE_COLORS[ev.type]}22;color:${TYPE_COLORS[ev.type]}">
+          <div class="ep-dot" style="background:${TYPE_COLORS[ev.type]}"></div>
+          <span class="ep-name">${ev.exam.short_name}</span>
+        </div>`).join('')}
+      ${more>0?`<div class="more-events" onclick="showMoreEvents(${y},${m},${d})">+${more} more</div>`:''}
+    </div>`;
+  }
+
+  // Next month padding
+  const total = firstDay + daysInMonth;
+  const remaining = (7 - (total%7)) % 7;
+  for (let i=1; i<=remaining; i++) {
+    html += `<div class="cal-day other-month"><div class="day-num">${i}</div></div>`;
+  }
+
+  document.getElementById('cal-grid').innerHTML = html;
+}
+
+/* ═══════════════════════════════════════════
+   LIST RENDER
+═══════════════════════════════════════════ */
+function renderList() {
+  const el = document.getElementById('view-list');
+  if (!filteredEvents.length) { el.innerHTML = emptyState(); return; }
+
+  // Group by date
+  const byDate = {};
+  filteredEvents.forEach(ev => {
+    if (!byDate[ev.date]) byDate[ev.date] = [];
+    byDate[ev.date].push(ev);
+  });
+
+  const html = Object.entries(byDate).sort((a,b)=>a[0].localeCompare(b[0])).map(([date,evs]) => `
+    <div class="list-group">
+      <div class="list-date-header">
+        <div class="list-date-badge">${fmtDate(date)}</div>
+        <div class="list-date-line"></div>
+      </div>
+      ${evs.map(ev => examCard(ev)).join('')}
+    </div>`).join('');
+
+  el.innerHTML = html;
+}
+
+function examCard(ev) {
+  const c = TYPE_COLORS[ev.type];
+  const catC = CAT_COLORS[ev.exam.category];
+  return `<div class="exam-card" onclick='openModal("${ev.exam.id}", ${JSON.stringify(ev)})' style="--card-color:${c}">
+    <style>.exam-card[style*="${c.replace('(','\\(').replace(')','\\)')}"]::before{background:${c}}</style>
+    <div class="exam-card-flag">${ev.exam.flag}</div>
+    <div class="exam-card-body">
+      <div class="exam-card-name">
+        ${ev.exam.name}
+        <span class="exam-card-short">${ev.exam.short_name}</span>
+      </div>
+      <div class="exam-card-meta">
+        <span>🏛 ${ev.exam.conducting_body}</span>
+        <span>🗺 ${ev.exam.country}</span>
+        <span class="cat-badge" style="background:${catC}22;color:${catC}">${ev.exam.category}</span>
+      </div>
+    </div>
+    <div>
+      <div class="event-type-badge" style="background:${c}22;color:${c}">
+        ${TYPE_LABELS[ev.type]||ev.type}
+      </div>
+      ${ev.tentative?`<div style="font-size:.65rem;color:var(--amber);text-align:center;margin-top:.3rem">⚠ Tentative</div>`:''}
+    </div>
+  </div>`;
+}
+
+/* ═══════════════════════════════════════════
+   TIMELINE RENDER
+═══════════════════════════════════════════ */
+function renderTimeline() {
+  const wrap = document.getElementById('timeline-wrap');
+  if (!filteredEvents.length) { wrap.innerHTML = emptyState(); return; }
+
+  const html = filteredEvents.slice(0,60).map((ev,i) => {
+    const c = TYPE_COLORS[ev.type];
+    const catC = CAT_COLORS[ev.exam.category];
+    return `<div class="timeline-item" style="animation-delay:${i*.03}s">
+      <div class="timeline-dot" style="background:${c};box-shadow:0 0 10px ${c}"></div>
+      <div class="exam-card" onclick='openModal("${ev.exam.id}", ${JSON.stringify(ev)})' style="margin-left:.5rem">
+        <style>.exam-card:nth-child(${i+1})::before{background:${c}}</style>
+        <div class="exam-card-flag">${ev.exam.flag}</div>
+        <div class="exam-card-body">
+          <div class="exam-card-name">
+            ${ev.exam.short_name} — ${ev.label}
+            ${ev.tentative?'<span style="font-size:.65rem;color:var(--amber)">⚠ Tentative</span>':''}
+          </div>
+          <div class="exam-card-meta">
+            <span>📅 ${fmtDate(ev.date)}</span>
+            <span>🗺 ${ev.exam.country}</span>
+            <span class="cat-badge" style="background:${catC}22;color:${catC}">${ev.exam.category}</span>
+          </div>
+        </div>
+        <div class="event-type-badge" style="background:${c}22;color:${c}">${TYPE_LABELS[ev.type]}</div>
+      </div>
+    </div>`;
+  }).join('');
+
+  wrap.innerHTML = html;
+}
+
+function emptyState() {
+  return `<div class="empty-state"><div class="empty-icon">📭</div><p>No events match your filters.</p><p style="font-size:.75rem">Try adjusting filters or clearing them.</p></div>`;
+}
+
+/* ═══════════════════════════════════════════
+   MODAL
+═══════════════════════════════════════════ */
+function openModal(examId, focusEvent) {
+  const exam = EXAMS.find(e=>e.id===examId);
+  if (!exam) return;
+  const catC = CAT_COLORS[exam.category];
+  const typeC = focusEvent ? TYPE_COLORS[focusEvent.type] : catC;
+
+  document.getElementById('modal-eventtype').innerHTML =
+    focusEvent ? `<span style="color:${typeC}">${TYPE_LABELS[focusEvent.type]}</span> · ${focusEvent.date}${focusEvent.tentative?' <span style="color:var(--amber)">⚠ Tentative</span>':''}` : '';
+
+  document.getElementById('modal-name').textContent = exam.name;
+
+  document.getElementById('modal-meta').innerHTML = `
+    <span class="cat-badge" style="background:${catC}22;color:${catC}">${exam.category}</span>
+    <span class="tag-pill">${exam.flag} ${exam.country}</span>
+    <span class="tag-pill">🔁 ${exam.frequency}</span>`;
+
+  document.getElementById('modal-dates').innerHTML = exam.dates.map(d => `
+    <div class="td-item">
+      <div class="td-dot" style="background:${TYPE_COLORS[d.type]}"></div>
+      <div class="td-label">${d.label} <span style="font-size:.68rem;color:var(--muted)">(${TYPE_LABELS[d.type]})</span></div>
+      <div class="td-date">${fmtDate(d.date)}</div>
+      ${d.tentative?'<span class="td-tentative">⚠ Tentative</span>':''}
+    </div>`).join('');
+
+  document.getElementById('modal-info').innerHTML = `
+    <div class="info-cell"><div class="info-label">Conducted By</div><div class="info-val">${exam.conducting_body}</div></div>
+    <div class="info-cell"><div class="info-label">Frequency</div><div class="info-val" style="text-transform:capitalize">${exam.frequency}</div></div>
+    <div class="info-cell" style="grid-column:1/-1"><div class="info-label">Eligibility</div><div class="info-val">${exam.eligibility||'—'}</div></div>`;
+
+  document.getElementById('modal-tags').innerHTML = exam.tags.map(t=>`<span class="tag-pill">#${t}</span>`).join('');
+  document.getElementById('modal-link').innerHTML = `<a class="official-link" href="${exam.official_url}" target="_blank">🔗 Official Website ↗</a>`;
+
+  document.getElementById('modal-overlay').classList.add('open');
+}
+
+function closeModal(e) { if (e.target===document.getElementById('modal-overlay')) closeModalDirect(); }
+function closeModalDirect() { document.getElementById('modal-overlay').classList.remove('open'); }
+document.addEventListener('keydown', e => { if (e.key==='Escape') closeModalDirect(); });
+
+/* ═══════════════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════════════ */
+function prevPeriod() {
+  if (currentView==='calendar') { currentDate.setMonth(currentDate.getMonth()-1); }
+  else { currentDate.setMonth(currentDate.getMonth()-3); }
+  renderCurrentView();
+  updatePeriodTitle();
+}
+
+function nextPeriod() {
+  if (currentView==='calendar') { currentDate.setMonth(currentDate.getMonth()+1); }
+  else { currentDate.setMonth(currentDate.getMonth()+3); }
+  renderCurrentView();
+  updatePeriodTitle();
+}
+
+function goToday() {
+  currentDate = new Date(); currentDate.setDate(1);
+  renderCurrentView(); updatePeriodTitle();
+}
+
+function updatePeriodTitle() {
+  const y = currentDate.getFullYear(), m = currentDate.getMonth();
+  document.getElementById('period-title').innerHTML = `${MONTHS[m]} <em>${y}</em>`;
+}
+
+function showMoreEvents(y, m, d) {
+  // Quickly show a popup with more events for that day
+  const dayEvs = filteredEvents.filter(ev => {
+    const dt = parseDate(ev.date);
+    return dt.getFullYear()===y && dt.getMonth()===m && dt.getDate()===d;
+  });
+  // Open modal with a list
+  document.getElementById('modal-eventtype').innerHTML = `<span style="color:var(--accent)">All events on ${fmtDate(`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`)}</span>`;
+  document.getElementById('modal-name').textContent = `${dayEvs.length} Events`;
+  document.getElementById('modal-meta').innerHTML = '';
+  document.getElementById('modal-dates').innerHTML = dayEvs.map(ev=>`
+    <div class="td-item" onclick='openModal("${ev.exam.id}", ${JSON.stringify(ev)})' style="cursor:pointer">
+      <div class="td-dot" style="background:${TYPE_COLORS[ev.type]}"></div>
+      <div class="td-label">${ev.exam.flag} ${ev.exam.short_name} — ${ev.label}</div>
+      <div class="event-type-badge" style="background:${TYPE_COLORS[ev.type]}22;color:${TYPE_COLORS[ev.type]};font-size:.65rem">${TYPE_LABELS[ev.type]}</div>
+    </div>`).join('');
+  document.getElementById('modal-info').innerHTML = '';
+  document.getElementById('modal-tags').innerHTML = '';
+  document.getElementById('modal-link').innerHTML = '';
+  document.getElementById('modal-overlay').classList.add('open');
+}
+
+/* ═══════════════════════════════════════════
+   INIT
+═══════════════════════════════════════════ */
+buildFilterUI();
+applyFilters();
+</script>
+</body>
+</html>

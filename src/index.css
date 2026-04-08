@@ -1,0 +1,118 @@
+/* ═══════════════════════════════════════════════════════
+   GLOBAL EXAM CALENDAR — Design System & Base Styles
+   ═══════════════════════════════════════════════════════ */
+
+/* ─── Design Tokens ─── */
+:root {
+  --bg: #0a0d14;
+  --surface: #111520;
+  --surface2: #161c2d;
+  --border: #1e2740;
+  --border2: #263050;
+  --text: #e8eaf2;
+  --muted: #6b7491;
+  --accent: #4f8ef7;
+  --accent2: #7c4fff;
+  --gold: #f5c542;
+  --emerald: #2dcc8f;
+  --rose: #f5506e;
+  --amber: #f7934c;
+  --sky: #38bdf8;
+
+  /* Category tokens */
+  --cat-competitive: #f5506e;
+  --cat-entrance: #4f8ef7;
+  --cat-language: #2dcc8f;
+  --cat-professional: #f7934c;
+  --cat-academic: #a78bfa;
+
+  /* Event type tokens */
+  --type-registration-start: #2dcc8f;
+  --type-registration-end: #f5c542;
+  --type-admit-card: #4f8ef7;
+  --type-exam-date: #f5506e;
+  --type-result: #a78bfa;
+  --type-counselling: #f7934c;
+  --type-other: #6b7491;
+}
+
+/* ─── Reset ─── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ─── Body ─── */
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Ambient Background Gradients ─── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 80% 10%, rgba(79, 142, 247, 0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 20% 80%, rgba(124, 79, 255, 0.07) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── Root ─── */
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border2);
+  border-radius: 3px;
+}
+
+/* ─── Selection ─── */
+::selection {
+  background: rgba(79, 142, 247, 0.3);
+  color: var(--text);
+}
+
+/* ─── Focus Visible ─── */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ─── Horizontal Rule ─── */
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+}
+
+/* ─── Links ─── */
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

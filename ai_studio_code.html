@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Global Exam Calendar | Open Source Initiative</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0d14; --surface: #111520; --surface2: #161c2d;
+    --border: #1e2740; --border2: #263050; --text: #e8eaf2;
+    --muted: #6b7491; --accent: #4f8ef7; --accent2: #7c4fff;
+    --gold: #f5c542; --emerald: #2dcc8f; --rose: #f5506e;
+    --amber: #f7934c; --sky: #38bdf8;
+
+    --cat-competitive: #f5506e; --cat-entrance: #4f8ef7;
+    --cat-language: #2dcc8f; --cat-professional: #f7934c;
+    --cat-academic: #a78bfa;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg); color: var(--text);
+    min-height: 100vh; overflow-x: hidden;
+  }
+
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 80% 10%, rgba(79,142,247,.07) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 40% at 20% 80%, rgba(124,79,255,.07) 0%, transparent 60%);
+    pointer-events: none; z-index: 0;
+  }
+
+  /* ─── Header ─── */
+  header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(10,13,20,.85); backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem; display: flex; align-items: center; gap: 1.5rem;
+    height: 64px;
+  }
+  .logo { font-family: 'DM Serif Display', serif; font-size: 1.35rem; display: flex; align-items: center; gap: .6rem; white-space: nowrap; }
+  .logo-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); animation: pulse 2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.6;transform:scale(.8)} }
+
+  /* ─── Buttons & Controls ─── */
+  .btn-outline {
+    background: transparent; border: 1px solid var(--border2); color: var(--text);
+    padding: .4rem .8rem; border-radius: 8px; font-family: inherit; font-size: .8rem;
+    cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: .4rem; text-decoration: none;
+  }
+  .btn-outline:hover { background: var(--surface2); border-color: var(--accent); }
+  .btn-accent {
+    background: var(--accent); border: none; color: #fff;
+    padding: .4rem .8rem; border-radius: 8px; font-family: inherit; font-size: .8rem;
+    cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: .4rem; font-weight: 500;
+  }
+  .btn-accent:hover { filter: brightness(1.1); transform: translateY(-1px); }
+
+  .view-toggle { display: flex; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 3px; gap: 2px; margin-left: auto; }
+  .view-btn { background: none; border: none; color: var(--muted); padding: .35rem .8rem; border-radius: 6px; cursor: pointer; font-size: .8rem; font-family: 'Outfit', sans-serif; font-weight: 500; transition: all .2s; }
+  .view-btn.active { background: var(--border2); color: var(--text); }
+  .view-btn:hover:not(.active) { color: var(--text); }
+
+  /* ─── Layout ─── */
+  .app-shell { display: flex; position: relative; z-index: 1; min-height: calc(100vh - 64px); }
+
+  /* ─── Sidebar ─── */
+  aside {
+    width: 280px; flex-shrink: 0; border-right: 1px solid var(--border);
+    padding: 1.5rem; background: var(--surface); display: flex; flex-direction: column;
+    gap: 1.5rem; overflow-y: auto; max-height: calc(100vh - 64px); position: sticky; top: 64px;
+    transition: transform 0.3s ease;
+  }
+  .sidebar-section-title { font-size: .7rem; font-weight: 600; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin-bottom: .6rem; display: flex; justify-content: space-between; align-items: center;}
+  
+  /* Input/Search */
+  .search-wrap { position: relative; }
+  .search-wrap input { width: 100%; background: var(--surface2); border: 1px solid var(--border); color: var(--text); padding: .6rem .9rem .6rem 2.2rem; border-radius: 8px; font-family: inherit; font-size: .85rem; outline: none; }
+  .search-wrap input:focus { border-color: var(--accent); }
+  .search-icon { position: absolute; left: .7rem; top: 50%; transform: translateY(-50%); color: var(--muted); font-size: .9rem; pointer-events: none; }
+
+  /* Chips */
+  .filter-group { display: flex; flex-direction: column; gap: .5rem; }
+  .filter-chip, .flag-chip { display: flex; align-items: center; gap: .55rem; padding: .45rem .7rem; border-radius: 8px; cursor: pointer; font-size: .83rem; transition: all .18s; user-select: none; border: 1px solid transparent; }
+  .filter-chip:hover, .flag-chip:hover { background: var(--surface2); }
+  .filter-chip.selected, .flag-chip.selected { background: var(--surface2); border-color: var(--border2); }
+  .chip-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .chip-count { margin-left: auto; font-family: 'DM Mono', monospace; font-size: .7rem; color: var(--muted); background: var(--border); padding: .1rem .35rem; border-radius: 4px; }
+
+  /* Date Range */
+  .date-range input { width: 100%; background: var(--surface2); border: 1px solid var(--border); color: var(--text); padding: .5rem .7rem; border-radius: 8px; font-family: inherit; font-size: .82rem; margin-top: .3rem; outline: none; color-scheme: dark;}
+
+  /* ─── Main ─── */
+  main { flex: 1; padding: 2rem; overflow-y: auto; min-width: 0; }
+  .month-nav { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+  .month-title { font-family: 'DM Serif Display', serif; font-size: 1.8rem; flex: 1; }
+  .month-title em { font-style: italic; color: var(--muted); font-size: 1.2rem; }
+  .nav-btn { background: var(--surface); border: 1px solid var(--border); color: var(--text); width: 36px; height: 36px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+  .nav-btn:hover { background: var(--surface2); border-color: var(--border2); }
+
+  /* View Containers */
+  #view-calendar, #view-list, #view-timeline { display: none; }
+  #view-calendar.active, #view-list.active, #view-timeline.active { display: block; }
+
+  /* Calendar Grid */
+  .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 1px; background: var(--border); border-radius: 12px; border: 1px solid var(--border); overflow: hidden;}
+  .cal-dow { background: var(--surface); text-align: center; padding: .6rem; font-size: .72rem; font-weight: 600; text-transform: uppercase; color: var(--muted); }
+  .cal-day { background: var(--surface); min-height: 120px; padding: .5rem; transition: background .15s; }
+  .cal-day.other-month { opacity: .35; }
+  .cal-day.today { background: rgba(79,142,247,.08); }
+  .day-num { font-family: 'DM Mono', monospace; font-size: .78rem; color: var(--muted); margin-bottom: .3rem; }
+  
+  .event-pill { display: flex; align-items: center; gap: .3rem; padding: .2rem .4rem; border-radius: 4px; font-size: .68rem; margin-bottom: 2px; cursor: pointer; transition: filter .15s; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+  .event-pill:hover { filter: brightness(1.3); }
+
+  /* List & Timeline Shared Cards */
+  .exam-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.2rem; margin-bottom: .7rem; display: flex; align-items: center; gap: 1.2rem; cursor: pointer; position: relative; overflow: hidden; transition: transform 0.2s;}
+  .exam-card:hover { border-color: var(--border2); transform: translateX(2px); }
+  .exam-card::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; }
+  .cat-badge, .event-type-badge { padding: .2rem .6rem; border-radius: 20px; font-size: .68rem; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; }
+  
+  /* Timeline specific */
+  .timeline-wrap { position: relative; padding-left: 2rem; }
+  .timeline-wrap::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--accent), transparent); }
+  .timeline-item { position: relative; margin-bottom: 1rem; }
+  .timeline-dot { position: absolute; left: -2rem; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; border-radius: 50%; border: 3px solid var(--bg); z-index: 2; }
+
+  /* ─── Modal ─── */
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.7); backdrop-filter: blur(6px); z-index: 200; display: flex; align-items: center; justify-content: center; padding: 1rem; opacity: 0; pointer-events: none; transition: opacity .25s; }
+  .modal-overlay.open { opacity: 1; pointer-events: all; }
+  .modal { background: var(--surface); border: 1px solid var(--border2); border-radius: 16px; width: 100%; max-width: 560px; max-height: 90vh; overflow-y: auto; transform: scale(.95); transition: transform .25s; }
+  .modal-overlay.open .modal { transform: scale(1); }
+  .modal-header { padding: 1.5rem; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: var(--surface); z-index: 1; display:flex; justify-content: space-between; align-items:flex-start;}
+  .modal-body { padding: 1.5rem; }
+  .modal-close { background: var(--surface2); border: none; color: var(--text); width: 30px; height: 30px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+  
+  .bookmark-btn { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; background: var(--surface2); border: 1px solid var(--border); color: var(--text); padding: 0.5rem 1rem; border-radius: 8px; cursor: pointer; width: 100%; justify-content: center; margin-top: 1rem; transition: background 0.2s;}
+  .bookmark-btn.saved { background: rgba(245, 197, 66, 0.15); border-color: var(--gold); color: var(--gold); }
+
+  /* Utilities */
+  .separator { height: 1px; background: var(--border); }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+  .empty-state { text-align: center; padding: 5rem 2rem; color: var(--muted); }
+
+  /* Mobile adjustments */
+  .mobile-menu-btn { display: none; }
+  @media (max-width: 900px) { aside { width: 240px; } .cal-day { min-height: 80px; } }
+  @media (max-width: 700px) {
+    header { padding: 0 1rem; flex-wrap: wrap; height: auto; padding-top: 10px; padding-bottom: 10px;}
+    .view-toggle { order: 3; width: 100%; justify-content: center; margin-top: 10px;}
+    .mobile-menu-btn { display: block; }
+    aside { position: fixed; left: -100%; top: 0; height: 100vh; z-index: 300; background: var(--bg); transition: left 0.3s; }
+    aside.open { left: 0; box-shadow: 20px 0 50px rgba(0,0,0,0.8); }
+    .cal-day { min-height: 55px; }
+    .day-num { margin-bottom: 0;}
+    .event-pill .ep-name { display: none;} /* Show only dots on small screens */
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <button class="mobile-menu-btn btn-outline" onclick="toggleMobileSidebar()">☰</button>
+  <div class="logo">
+    <div class="logo-dot"></div>
+    Global Exam <em>Calendar</em>
+  </div>
+
+  <div style="display:flex; gap:0.5rem; margin-left: auto; order: 2;">
+    <button class="btn-outline" onclick="togglePlannerView()" id="btn-planner">⭐ My Planner</button>
+    <a href="https://github.com/yourusername/global-exam-calendar" target="_blank" class="btn-accent">
+      <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+      <span class="desktop-only">Contribute</span>
+    </a>
+  </div>
+
+  <div class="view-toggle">
+    <button class="view-btn active" onclick="setView('calendar')" id="btn-calendar">⬛ Calendar</button>
+    <button class="view-btn" onclick="setView('list')" id="btn-list">☰ List</button>
+    <button class="view-btn" onclick="setView('timeline')" id="btn-timeline">◈ Timeline</button>
+  </div>
+</header>
+
+<div class="app-shell">
+  <!-- Sidebar -->
+  <aside id="sidebar">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+        <span class="sidebar-section-title" style="margin:0;">Filters</span>
+        <button class="mobile-menu-btn nav-btn" style="width:28px;height:28px;" onclick="toggleMobileSidebar()">✕</button>
+    </div>
+
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-input" placeholder="Search exams..." oninput="applyFilters()">
+    </div>
+
+    <!-- Active Filters will inject here -->
+    <div id="active-filters-wrap" style="display:flex; flex-wrap:wrap; gap:.4rem;"></div>
+    
+    <div>
+      <div class="sidebar-section-title">Date Range</div>
+      <div class="date-range">
+        <input type="date" id="date-from" placeholder="From" onchange="applyFilters()">
+        <input type="date" id="date-to" placeholder="To" onchange="applyFilters()">
+      </div>
+    </div>
+    <div class="separator"></div>
+
+    <div id="filter-containers">
+        <!-- Rendered by JS -->
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main>
+    <div class="month-nav">
+      <button class="nav-btn" onclick="prevPeriod()">←</button>
+      <button class="nav-btn" onclick="nextPeriod()">→</button>
+      <div class="month-title" id="period-title">...</div>
+      <div style="margin-left: auto; display: flex; gap: 0.5rem;">
+          <button class="btn-outline" onclick="goToday()">Today</button>
+          <button class="btn-outline" onclick="exportToICS()" id="btn-export" title="Export currently visible events to Calendar">🗓️ Export .ics</button>
+      </div>
+    </div>
+    
+    <div style="font-size: .8rem; color: var(--muted); margin-bottom: 1rem;">
+        Showing <span id="results-count" style="color:var(--text); font-weight:600;">0</span> events
+    </div>
+
+    <div id="view-calendar" class="active"><div class="cal-grid" id="cal-grid"></div></div>
+    <div id="view-list"></div>
+    <div id="view-timeline"><div class="timeline-wrap" id="timeline-wrap"></div></div>
+  </main>
+</div>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <div>
+        <div style="font-size:.7rem;text-transform:uppercase;color:var(--muted);" id="modal-eventtype"></div>
+        <div style="font-family:'DM Serif Display', serif; font-size: 1.5rem;" id="modal-name"></div>
+        <div style="display:flex; gap:.5rem; margin-top:.5rem;" id="modal-meta"></div>
+      </div>
+      <button class="modal-close" onclick="closeModalDirect()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div id="modal-dates" style="display:flex; flex-direction:column; gap:.5rem; margin-bottom:1rem;"></div>
+      <div id="modal-info" style="display:grid; grid-template-columns:1fr 1fr; gap:.5rem; margin-bottom:1rem;"></div>
+      <button class="bookmark-btn" id="modal-bookmark-btn" onclick="toggleBookmarkCurrent()">
+        ⭐ Add to My Planner
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════
+   DATA LAYER (Decoupled Architecture)
+   In production, replace this string with fetch('./data/exams.json')
+═══════════════════════════════════════════ */
+const RAW_JSON_DATA = `[
+  {
+    "id": "upsc-cse-2026", "name": "Union Public Service Commission Civil Services", "short_name": "UPSC CSE",
+    "country": "India", "flag": "🇮🇳", "category": "competitive", "frequency": "annual", "conducting_body": "UPSC",
+    "official_url": "https://upsc.gov.in", "tags": ["government","ias"],
+    "dates":[
+      { "type":"registration_start", "date":"2026-02-01", "label":"Notification Released" },
+      { "type":"exam_date", "date":"2026-05-24", "label":"Prelims Exam" }
+    ]
+  },
+  {
+    "id": "jee-main-2026", "name": "Joint Entrance Examination Main", "short_name": "JEE Main",
+    "country": "India", "flag": "🇮🇳", "category": "entrance", "frequency": "biannual", "conducting_body": "NTA",
+    "official_url": "https://jeemain.nta.ac.in", "tags": ["engineering","iit"],
+    "dates":[
+      { "type":"registration_start", "date":"2026-03-01", "label":"Registration Opens" },
+      { "type":"exam_date", "date":"2026-04-22", "label":"Session 1 Exam" }
+    ]
+  },
+  {
+    "id": "sat-2026", "name": "Scholastic Assessment Test", "short_name": "SAT",
+    "country": "USA", "flag": "🇺🇸", "category": "entrance", "frequency": "monthly", "conducting_body": "College Board",
+    "official_url": "https://collegeboard.org", "tags":["undergraduate"],
+    "dates":[
+      { "type":"exam_date", "date":"2026-03-14", "label":"SAT March 2026" },
+      { "type":"exam_date", "date":"2026-05-02", "label":"SAT May 2026" }
+    ]
+  },
+  {
+    "id": "ielts-2026", "name": "International English Language Testing System", "short_name": "IELTS",
+    "country": "Global", "flag": "🌍", "category": "language", "frequency": "monthly", "conducting_body": "British Council",
+    "official_url": "https://ielts.org", "tags": ["english","study abroad"],
+    "dates":[
+      { "type":"exam_date", "date":"2026-04-11", "label":"IELTS Academic — April" },
+      { "type":"exam_date", "date":"2026-05-09", "label":"IELTS Academic — May" }
+    ]
+  }
+]`;
+
+/* ═══════════════════════════════════════════
+   STATE MANAGEMENT
+═══════════════════════════════════════════ */
+let EXAMS = [];
+let ALL_EVENTS = [];
+let FILTERED_EVENTS =[];
+let filters = { countries: new Set(), categories: new Set(), eventTypes: new Set() };
+
+// The user's personalized saved exams (Bookmarking Feature)
+let myPlanner = new Set(JSON.parse(localStorage.getItem('myPlannerExams') || '[]'));
+let showOnlyPlanner = false;
+let currentOpenedExamId = null;
+
+let currentView = 'calendar';
+let currentDate = new Date(2026, 3, 1); // Defaults to April 2026 for demo
+
+const TYPE_COLORS = { registration_start:'#2dcc8f', registration_end:'#f5c542', admit_card:'#4f8ef7', exam_date:'#f5506e', result:'#a78bfa', counselling:'#f7934c', other:'#6b7491' };
+const CAT_COLORS = { competitive:'#f5506e', entrance:'#4f8ef7', language:'#2dcc8f', professional:'#f7934c', academic:'#a78bfa' };
+const TYPE_LABELS = { registration_start:'Registration Opens', registration_end:'Registration Closes', admit_card:'Admit Card', exam_date:'Exam Day', result:'Result', counselling:'Counselling', other:'Other' };
+
+/* ═══════════════════════════════════════════
+   INITIALIZATION
+═══════════════════════════════════════════ */
+async function loadData() {
+  // Simulating a network request for the open-source JSON structure
+  try {
+    EXAMS = JSON.parse(RAW_JSON_DATA);
+    ALL_EVENTS = EXAMS.flatMap(ex => ex.dates.map(dt => ({ ...dt, exam: ex })));
+    buildFilterUI();
+    applyFilters();
+  } catch(e) { console.error("Error loading exam data:", e); }
+}
+
+loadData();
+
+/* ═══════════════════════════════════════════
+   MY PLANNER (BOOKMARKS)
+═══════════════════════════════════════════ */
+function togglePlannerView() {
+    showOnlyPlanner = !showOnlyPlanner;
+    const btn = document.getElementById('btn-planner');
+    if(showOnlyPlanner) {
+        btn.style.background = 'var(--gold)'; btn.style.color = '#000';
+    } else {
+        btn.style.background = ''; btn.style.color = '';
+    }
+    applyFilters();
+}
+
+function toggleBookmarkCurrent() {
+    if(!currentOpenedExamId) return;
+    if(myPlanner.has(currentOpenedExamId)) {
+        myPlanner.delete(currentOpenedExamId);
+    } else {
+        myPlanner.add(currentOpenedExamId);
+    }
+    localStorage.setItem('myPlannerExams', JSON.stringify([...myPlanner]));
+    updateBookmarkButtonUI();
+    if(showOnlyPlanner) applyFilters();
+}
+
+function updateBookmarkButtonUI() {
+    const btn = document.getElementById('modal-bookmark-btn');
+    if(!currentOpenedExamId) return;
+    if(myPlanner.has(currentOpenedExamId)) {
+        btn.classList.add('saved');
+        btn.innerHTML = '★ Saved to Planner (Click to remove)';
+    } else {
+        btn.classList.remove('saved');
+        btn.innerHTML = '☆ Add to My Planner';
+    }
+}
+
+/* ═══════════════════════════════════════════
+   EXPORT TO ICS (Apple/Google Calendar)
+═══════════════════════════════════════════ */
+function exportToICS() {
+    if(FILTERED_EVENTS.length === 0) return alert("No events to export!");
+    let icsContent = "BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//GlobalExamCalendar//EN\n";
+    
+    FILTERED_EVENTS.forEach(ev => {
+        const dt = ev.date.replace(/-/g, '');
+        // simple full day event formatting
+        icsContent += "BEGIN:VEVENT\n";
+        icsContent += `DTSTART;VALUE=DATE:${dt}\n`;
+        icsContent += `SUMMARY:${ev.exam.short_name} - ${ev.label}\n`;
+        icsContent += `DESCRIPTION:Official URL: ${ev.exam.official_url}\\nView more details on Global Exam Calendar.\n`;
+        icsContent += "END:VEVENT\n";
+    });
+    
+    icsContent += "END:VCALENDAR";
+    const blob = new Blob([icsContent], { type: 'text/calendar' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `Exam_Calendar_${new Date().toISOString().split('T')[0]}.ics`;
+    a.click();
+    window.URL.revokeObjectURL(url);
+}
+
+/* ═══════════════════════════════════════════
+   FILTER LOGIC
+═══════════════════════════════════════════ */
+function buildFilterUI() {
+  const container = document.getElementById('filter-containers');
+  const sections = [
+    { key:'countries', label:'Country', items:[...new Set(EXAMS.map(e=>e.country))].sort() },
+    { key:'categories', label:'Category', items:[...new Set(EXAMS.map(e=>e.category))].sort() },
+    { key:'eventTypes', label:'Event Type', items:[...new Set(ALL_EVENTS.map(e=>e.type))].sort() }
+  ];
+
+  container.innerHTML = sections.map(sec => `
+    <div>
+      <div class="sidebar-section-title">${sec.label}</div>
+      <div class="filter-group">
+        ${sec.items.map(val => `
+          <div class="filter-chip" id="fc-${sec.key}-${val}" onclick="toggleFilter('${sec.key}','${val}')">
+            <div class="chip-dot" style="background:var(--accent)"></div>
+            <span style="text-transform:capitalize">${TYPE_LABELS[val] || val}</span>
+          </div>`).join('')}
+      </div>
+    </div>
+    <div class="separator" style="margin: 1.5rem 0;"></div>
+  `).join('');
+}
+
+function toggleFilter(group, val) {
+  if (filters[group].has(val)) filters[group].delete(val); else filters[group].add(val);
+  document.getElementById(`fc-${group}-${val}`).classList.toggle('selected');
+  applyFilters();
+}
+
+function applyFilters() {
+  const q = document.getElementById('search-input').value.toLowerCase();
+  const from = document.getElementById('date-from').value;
+  const to = document.getElementById('date-to').value;
+
+  FILTERED_EVENTS = ALL_EVENTS.filter(ev => {
+    const ex = ev.exam;
+    if(showOnlyPlanner && !myPlanner.has(ex.id)) return false;
+    if(filters.countries.size && !filters.countries.has(ex.country)) return false;
+    if(filters.categories.size && !filters.categories.has(ex.category)) return false;
+    if(filters.eventTypes.size && !filters.eventTypes.has(ev.type)) return false;
+    if(q && !ex.name.toLowerCase().includes(q) && !ex.short_name.toLowerCase().includes(q)) return false;
+    if(from && ev.date < from) return false;
+    if(to && ev.date > to) return false;
+    return true;
+  }).sort((a,b) => a.date.localeCompare(b.date));
+
+  document.getElementById('results-count').textContent = FILTERED_EVENTS.length;
+  renderCurrentView();
+}
+
+/* ═══════════════════════════════════════════
+   RENDERING VIEWS
+═══════════════════════════════════════════ */
+function setView(v) {
+  currentView = v;
+  ['calendar','list','timeline'].forEach(x => {
+    document.getElementById('view-'+x).classList.toggle('active', x===v);
+    document.getElementById('btn-'+x).classList.toggle('active', x===v);
+  });
+  renderCurrentView();
+}
+
+function renderCurrentView() {
+  if (currentView==='calendar') renderCalendar();
+  else if (currentView==='list') renderList();
+  else renderTimeline();
+}
+
+function renderCalendar() {
+  const y = currentDate.getFullYear(), m = currentDate.getMonth();
+  const MONTHS =['January','February','March','April','May','June','July','August','September','October','November','December'];
+  document.getElementById('period-title').innerHTML = `${MONTHS[m]} <em>${y}</em>`;
+
+  const daysInMonth = new Date(y,m+1,0).getDate();
+  const firstDay = new Date(y,m,1).getDay();
+  let html =['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].map(d=>`<div class="cal-dow">${d}</div>`).join('');
+
+  for (let i=0; i<firstDay; i++) html += `<div class="cal-day other-month"></div>`;
+
+  for (let d=1; d<=daysInMonth; d++) {
+    const evts = FILTERED_EVENTS.filter(e => {
+        const dt = new Date(e.date); return dt.getFullYear()===y && dt.getMonth()===m && dt.getDate()===d;
+    });
+    
+    html += `<div class="cal-day">
+      <div class="day-num">${d}</div>
+      ${evts.slice(0,3).map(ev=>`
+        <div class="event-pill" onclick='openModal("${ev.exam.id}")' style="background:${TYPE_COLORS[ev.type]}22;color:${TYPE_COLORS[ev.type]}">
+          <div class="ep-dot" style="background:${TYPE_COLORS[ev.type]}"></div>
+          <span class="ep-name">${ev.exam.short_name}</span>
+        </div>`).join('')}
+      ${evts.length>3 ? `<div style="font-size:0.65rem; color:var(--muted)">+${evts.length-3} more</div>` : ''}
+    </div>`;
+  }
+  document.getElementById('cal-grid').innerHTML = html;
+}
+
+function renderList() {
+    if(!FILTERED_EVENTS.length) { document.getElementById('view-list').innerHTML = `<div class="empty-state">No events found. Adjust your filters or view "My Planner".</div>`; return;}
+    document.getElementById('view-list').innerHTML = FILTERED_EVENTS.map(ev => `
+      <div class="exam-card" onclick='openModal("${ev.exam.id}")' style="--c:${TYPE_COLORS[ev.type]}">
+        <style>.exam-card[style*="${TYPE_COLORS[ev.type]}"]::before{background:var(--c)}</style>
+        <div style="font-size:1.5rem">${ev.exam.flag}</div>
+        <div style="flex:1">
+          <div style="font-weight:600; font-size:.9rem">${ev.exam.name}</div>
+          <div style="font-size:.75rem; color:var(--muted); margin-top:.2rem;">📅 ${ev.date} • ${ev.exam.conducting_body}</div>
+        </div>
+        <div class="event-type-badge" style="background:${TYPE_COLORS[ev.type]}22;color:${TYPE_COLORS[ev.type]}">${TYPE_LABELS[ev.type]}</div>
+      </div>`).join('');
+}
+
+function renderTimeline() {
+    if(!FILTERED_EVENTS.length) { document.getElementById('view-timeline').innerHTML = `<div class="empty-state">No events found.</div>`; return;}
+    document.getElementById('timeline-wrap').innerHTML = FILTERED_EVENTS.slice(0,100).map(ev => `
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:${TYPE_COLORS[ev.type]}"></div>
+          <div class="exam-card" onclick='openModal("${ev.exam.id}")' style="margin-left: 1rem; --c:${TYPE_COLORS[ev.type]}">
+             <style>.exam-card[style*="${TYPE_COLORS[ev.type]}"]::before{background:var(--c)}</style>
+             <div>
+                <strong style="font-size:.9rem">${ev.exam.short_name} — ${ev.label}</strong>
+                <div style="font-size:.75rem; color:var(--muted)">${ev.date}</div>
+             </div>
+          </div>
+        </div>
+    `).join('');
+}
+
+/* ═══════════════════════════════════════════
+   INTERACTIONS & UTILS
+═══════════════════════════════════════════ */
+function openModal(id) {
+    const exam = EXAMS.find(e=>e.id===id);
+    if(!exam) return;
+    currentOpenedExamId = id;
+    
+    document.getElementById('modal-eventtype').innerText = `${exam.country} • ${exam.category}`;
+    document.getElementById('modal-name').innerText = exam.name;
+    document.getElementById('modal-meta').innerHTML = `
+        <span class="cat-badge" style="background:var(--surface2)">🏛 ${exam.conducting_body}</span>
+        <span class="cat-badge" style="background:var(--surface2)">🔗 <a href="${exam.official_url}" target="_blank" style="color:var(--accent); text-decoration:none;">Official Site</a></span>
+    `;
+    
+    document.getElementById('modal-dates').innerHTML = exam.dates.map(d=>`
+        <div style="display:flex; align-items:center; justify-content:space-between; background:var(--surface2); padding:.6rem .8rem; border-radius:8px;">
+            <span style="font-size:.8rem"><span style="color:${TYPE_COLORS[d.type]}">●</span> ${d.label}</span>
+            <span style="font-family:'DM Mono', monospace; font-size:.8rem; color:var(--muted)">${d.date}</span>
+        </div>
+    `).join('');
+    
+    updateBookmarkButtonUI();
+    document.getElementById('modal-overlay').classList.add('open');
+}
+
+function closeModal(e) { if (e.target===document.getElementById('modal-overlay')) closeModalDirect(); }
+function closeModalDirect() { document.getElementById('modal-overlay').classList.remove('open'); currentOpenedExamId = null;}
+document.addEventListener('keydown', e => { if (e.key==='Escape') closeModalDirect(); });
+
+function prevPeriod() { currentDate.setMonth(currentDate.getMonth()-(currentView==='calendar'?1:3)); renderCurrentView(); }
+function nextPeriod() { currentDate.setMonth(currentDate.getMonth()+(currentView==='calendar'?1:3)); renderCurrentView(); }
+function goToday() { currentDate = new Date(); currentDate.setDate(1); renderCurrentView(); }
+
+function toggleMobileSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+}
+</script>
+</body>
+</html>
