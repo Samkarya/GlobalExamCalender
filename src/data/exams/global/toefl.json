@@ -1,0 +1,39 @@
+{
+  "id": "toefl",
+  "name": "Test of English as a Foreign Language",
+  "short_name": "TOEFL iBT",
+  "country": "Global",
+  "country_code": "GLOBAL",
+  "region": "Global",
+  "category": "language",
+  "conducting_body": "Educational Testing Service (ETS)",
+  "frequency": "continuous",
+  "official_url": "https://www.ets.org/toefl",
+  "tags":[
+    "english",
+    "proficiency",
+    "study-abroad",
+    "immigration"
+  ],
+  "eligibility": "Open to all candidates; typically taken by non-native English speakers for academic, professional, and visa purposes.",
+  "dates":[
+    {
+      "type": "exam_date",
+      "date": "2026-05-16",
+      "label": "TOEFL iBT Test Date (Sample Center Date)",
+      "tentative": true
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-06-20",
+      "label": "TOEFL iBT Test Date (Sample Center Date)",
+      "tentative": true
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-07-18",
+      "label": "TOEFL iBT Test Date (Sample Center Date)",
+      "tentative": true
+    }
+  ]
+}

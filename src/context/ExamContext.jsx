@@ -71,11 +71,28 @@ export function ExamProvider({ children, showPlannerOnly = false }) {
                 // Vite's way to import multiple files. The resulting objects will be the parsed JSON
                 const modules = import.meta.glob('../data/exams/**/*.json');
                 const examsArray = [];
+                const now = new Date();
+                const currentYear = now.getFullYear();
+                const minYear = currentYear - 1;
+                const maxYear = currentYear + 1;
 
                 for (const path in modules) {
                     const module = await modules[path]();
-                    // Some plugins return the raw JSON, some nested under default
-                    examsArray.push(module.default || module);
+                    const exam = module.default || module;
+
+                    // Filter dates within the 3-year sliding window
+                    // (Past Year, Current, Future Year)
+                    if (exam.dates) {
+                        exam.dates = exam.dates.filter(d => {
+                            const year = new Date(d.date).getFullYear();
+                            return year >= minYear && year <= maxYear;
+                        });
+                    }
+
+                    // Only add exams that have at least one date in the window
+                    if (exam.dates && exam.dates.length > 0) {
+                        examsArray.push(exam);
+                    }
                 }
 
                 dispatch({ type: 'SET_EXAMS', payload: examsArray });
@@ -111,13 +128,13 @@ export function ExamProvider({ children, showPlannerOnly = false }) {
 
     // Aggregate stats
     const stats = useMemo(() => {
-        const countries = new Set(state.exams.map((e) => e.country));
+        const countries = new Set(filteredExams.map((e) => e.country));
         return {
             totalCountries: countries.size,
-            totalExams: state.exams.length,
-            totalEvents: flattenExamsToEvents(state.exams).length,
+            totalExams: filteredExams.length,
+            totalEvents: flattenExamsToEvents(filteredExams).length,
         };
-    }, [state.exams]);
+    }, [filteredExams]);
 
     // Filter options (unique values for sidebar)
     const filterOptions = useMemo(() => {
@@ -130,11 +147,11 @@ export function ExamProvider({ children, showPlannerOnly = false }) {
 
     // Filter counts
     const filterCounts = useMemo(() => ({
-        country: (c) => state.exams.filter((e) => e.country === c).length,
-        category: (c) => state.exams.filter((e) => e.category === c).length,
-        eventType: (t) => state.exams.flatMap((e) => e.dates).filter((d) => d.type === t).length,
-        frequency: (f) => state.exams.filter((e) => e.frequency === f).length,
-    }), [state.exams]);
+        country: (c) => filteredExams.filter((e) => e.country === c).length,
+        category: (c) => filteredExams.filter((e) => e.category === c).length,
+        eventType: (t) => filteredExams.flatMap((e) => e.dates).filter((d) => d.type === t).length,
+        frequency: (f) => filteredExams.filter((e) => e.frequency === f).length,
+    }), [filteredExams]);
 
     // Planner actions
     const togglePlanner = useCallback(

@@ -1,0 +1,33 @@
+{
+  "id": "pmp-global",
+  "name": "Project Management Professional",
+  "short_name": "PMP",
+  "country": "Global",
+  "country_code": "GLOBAL",
+  "region": "Global",
+  "category": "professional",
+  "conducting_body": "Project Management Institute (PMI)",
+  "frequency": "on-demand",
+  "official_url": "https://www.pmi.org/certifications/project-management-pmp",
+  "tags":[
+    "project management",
+    "pmi",
+    "certification",
+    "management"
+  ],
+  "eligibility": "4-year degree with 36 months experience OR High school diploma with 60 months experience, plus 35 hours of PM education.",
+  "dates":[
+    {
+      "type": "registration_start",
+      "date": "2026-01-01",
+      "label": "Rolling Application (Year-Round)",
+      "tentative": false
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-12-31",
+      "label": "Exams Available On-Demand (Year-Round)",
+      "tentative": false
+    }
+  ]
+}

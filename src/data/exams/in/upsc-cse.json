@@ -1,5 +1,5 @@
 {
-  "id": "upsc-cse-2026",
+  "id": "upsc-cse",
   "name": "Union Public Service Commission Civil Services Examination",
   "short_name": "UPSC CSE",
   "country": "India",
@@ -15,44 +15,44 @@
     "ias",
     "ips"
   ],
-  "eligibility": "Indian citizen, Graduate degree, Age 21-32",
+  "eligibility": "Graduate degree from a recognized university; Age 21-32 as of August 1, 2026.",
   "dates": [
     {
       "type": "registration_start",
-      "date": "2026-02-01",
-      "label": "Notification Released"
+      "date": "2026-02-04",
+      "label": "Official Notification & Registration Opens"
     },
     {
       "type": "registration_end",
-      "date": "2026-02-21",
-      "label": "Last Date to Apply"
+      "date": "2026-02-27",
+      "label": "Last Date to Apply (Extended)"
     },
     {
       "type": "admit_card",
-      "date": "2026-04-25",
-      "label": "Admit Card Download"
+      "date": "2026-05-04",
+      "label": "Prelims e-Admit Card Release",
+      "tentative": true
     },
     {
       "type": "exam_date",
       "date": "2026-05-24",
-      "label": "Prelims Exam"
+      "label": "Civil Services (Preliminary) Examination"
     },
     {
       "type": "result",
-      "date": "2026-07-15",
-      "label": "Prelims Result",
+      "date": "2026-06-25",
+      "label": "Prelims Result Declaration",
       "tentative": true
     },
     {
       "type": "exam_date",
-      "date": "2026-09-20",
-      "label": "Mains Exam",
-      "tentative": true
+      "date": "2026-08-21",
+      "label": "Civil Services (Main) Examination Begins"
     },
     {
       "type": "result",
-      "date": "2027-04-01",
-      "label": "Final Result",
+      "date": "2027-04-15",
+      "label": "Final Merit List & Results",
       "tentative": true
     }
   ]

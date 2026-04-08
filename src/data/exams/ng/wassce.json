@@ -1,5 +1,5 @@
 {
-  "id": "wassce-2026",
+  "id": "wassce",
   "name": "West African Senior School Certificate Examination",
   "short_name": "WASSCE",
   "country": "Nigeria",
@@ -8,39 +8,34 @@
   "category": "academic",
   "conducting_body": "West African Examinations Council (WAEC)",
   "frequency": "annual",
-  "official_url": "https://www.waecng.org",
-  "tags": [
-    "waec",
-    "nigeria",
-    "secondary",
-    "west africa"
-  ],
-  "eligibility": "Senior Secondary 3 students in West Africa",
+  "official_url": "https://www.waecnigeria.org",
+  "tags": ["secondary", "waec", "nigeria", "cb-wassce"],
+  "eligibility": "Senior Secondary 3 (SS3) students in recognized schools.",
   "dates": [
     {
       "type": "registration_start",
       "date": "2026-01-15",
-      "label": "Registration Opens"
+      "label": "Registration Period Starts"
     },
     {
       "type": "registration_end",
-      "date": "2026-03-15",
-      "label": "Registration Closes"
+      "date": "2026-03-13",
+      "label": "Extended Registration Deadline (Final)"
     },
     {
       "type": "exam_date",
-      "date": "2026-04-20",
-      "label": "WASSCE Exams Begin"
+      "date": "2026-04-21",
+      "label": "WASSCE Exams Begin (Practical Sessions)"
     },
     {
       "type": "exam_date",
-      "date": "2026-06-30",
+      "date": "2026-06-19",
       "label": "WASSCE Exams End"
     },
     {
       "type": "result",
-      "date": "2026-08-15",
-      "label": "Results Released",
+      "date": "2026-08-10",
+      "label": "Results Expected Release Date",
       "tentative": true
     }
   ]

@@ -83,6 +83,29 @@
     gap: 1rem;
 }
 
+.footer-credits {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--muted);
+}
+
+.footer-credits a {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.footer-credits a:hover {
+    text-decoration: underline;
+    color: var(--accent);
+}
+
+.separator-dot {
+    opacity: 0.5;
+    font-size: 0.5rem;
+}
+
 .footer-socials a {
     color: var(--muted);
     transition: color 0.15s;

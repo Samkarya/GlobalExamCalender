@@ -1,0 +1,40 @@
+{
+  "id": "gre-general",
+  "name": "Graduate Record Examinations General Test",
+  "short_name": "GRE",
+  "country": "Global",
+  "country_code": "GLOBAL",
+  "region": "Global",
+  "category": "entrance",
+  "conducting_body": "Educational Testing Service (ETS)",
+  "frequency": "year-round",
+  "official_url": "https://www.ets.org/gre",
+  "tags":[
+    "graduate",
+    "ms",
+    "phd",
+    "usa",
+    "global"
+  ],
+  "eligibility": "Anyone can take the test; usually intended for those pursuing a master's or doctoral degree.",
+  "dates":[
+    {
+      "type": "registration_start",
+      "date": "2026-01-01",
+      "label": "Registration Open (Year-Round)",
+      "tentative": false
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-12-31",
+      "label": "Tests Available Year-Round (Continuous)",
+      "tentative": false
+    },
+    {
+      "type": "result",
+      "date": "2026-12-31",
+      "label": "Results Available 8-10 Days After Test Date",
+      "tentative": true
+    }
+  ]
+}

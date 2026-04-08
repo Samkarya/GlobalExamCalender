@@ -1,0 +1,57 @@
+{
+  "id": "cfa-level1",
+  "name": "Chartered Financial Analyst Level I",
+  "short_name": "CFA L1",
+  "country": "Global",
+  "country_code": "GLOBAL",
+  "region": "Global",
+  "category": "professional",
+  "conducting_body": "CFA Institute",
+  "frequency": "quarterly",
+  "official_url": "https://www.cfainstitute.org",
+  "tags":[
+    "finance",
+    "investment",
+    "accounting",
+    "cfa"
+  ],
+  "eligibility": "Bachelor's degree or within 23 months of graduation",
+  "dates":[
+    {
+      "type": "registration_end",
+      "date": "2026-02-12",
+      "label": "May Window Registration Deadline",
+      "tentative": false
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-05-12",
+      "label": "May Window Exam Starts",
+      "tentative": false
+    },
+    {
+      "type": "registration_end",
+      "date": "2026-05-06",
+      "label": "August Window Registration Deadline",
+      "tentative": false
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-08-18",
+      "label": "August Window Exam Starts",
+      "tentative": false
+    },
+    {
+      "type": "registration_start",
+      "date": "2026-02-11",
+      "label": "November Window Registration Opens",
+      "tentative": false
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-11-11",
+      "label": "November Window Exam Starts",
+      "tentative": false
+    }
+  ]
+}

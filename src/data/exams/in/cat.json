@@ -1,45 +1,49 @@
 {
-  "id": "cat-2026",
+  "id": "cat-exam",
   "name": "Common Admission Test",
   "short_name": "CAT",
   "country": "India",
   "country_code": "IN",
   "region": "Asia",
   "category": "entrance",
-  "conducting_body": "IIMs",
+  "conducting_body": "Indian Institutes of Management (IIMs)",
   "frequency": "annual",
   "official_url": "https://iimcat.ac.in",
-  "tags": [
+  "tags":[
     "mba",
     "iim",
     "management",
     "business"
   ],
-  "eligibility": "Graduate degree with 50% marks",
-  "dates": [
+  "eligibility": "Bachelor's degree with at least 50% aggregate marks (45% for SC/ST/PwD)",
+  "dates":[
     {
       "type": "registration_start",
       "date": "2026-08-01",
-      "label": "CAT 2026 Registration Opens"
+      "label": "Registration Opens",
+      "tentative": true
     },
     {
       "type": "registration_end",
-      "date": "2026-09-15",
-      "label": "Registration Closes"
+      "date": "2026-09-20",
+      "label": "Registration Closes",
+      "tentative": true
     },
     {
       "type": "admit_card",
-      "date": "2026-10-28",
-      "label": "Admit Card Release"
+      "date": "2026-11-05",
+      "label": "Admit Card Release",
+      "tentative": true
     },
     {
       "type": "exam_date",
-      "date": "2026-11-22",
-      "label": "CAT 2026 Exam"
+      "date": "2026-11-29",
+      "label": "CAT 2026 Exam Day",
+      "tentative": true
     },
     {
       "type": "result",
-      "date": "2027-01-10",
+      "date": "2026-12-21",
       "label": "Result Declaration",
       "tentative": true
     }

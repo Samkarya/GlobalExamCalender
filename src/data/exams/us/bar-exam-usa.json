@@ -1,0 +1,64 @@
+{
+  "id": "ube-usa",
+  "name": "Uniform Bar Examination",
+  "short_name": "UBE",
+  "country": "United States",
+  "country_code": "US",
+  "region": "North America",
+  "category": "professional",
+  "conducting_body": "National Conference of Bar Examiners",
+  "frequency": "biannual",
+  "official_url": "https://www.ncbex.org",
+  "tags": ["law", "legal", "bar exam", "jd", "attorney"],
+  "eligibility": "Juris Doctor (JD) from an ABA-approved law school (most jurisdictions); specific character and fitness requirements.",
+  "dates": [
+    {
+      "type": "exam_date",
+      "date": "2026-02-24",
+      "label": "February Exam Day 1 (MEE/MPT)",
+      "tentative": false
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-02-25",
+      "label": "February Exam Day 2 (MBE)",
+      "tentative": false
+    },
+    {
+      "type": "result",
+      "date": "2026-04-15",
+      "label": "February Results Window (Varies by State)",
+      "tentative": true
+    },
+    {
+      "type": "registration_start",
+      "date": "2026-03-02",
+      "label": "July Registration Opens (Standard Deadline)",
+      "tentative": false
+    },
+    {
+      "type": "registration_end",
+      "date": "2026-05-01",
+      "label": "July Timely Filing Deadline",
+      "tentative": false
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-07-28",
+      "label": "July Exam Day 1 (MEE/MPT or NextGen Day 1)",
+      "tentative": false
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-07-29",
+      "label": "July Exam Day 2 (MBE or NextGen Day 2)",
+      "tentative": false
+    },
+    {
+      "type": "result",
+      "date": "2026-10-15",
+      "label": "July Results Window (Varies by State)",
+      "tentative": true
+    }
+  ]
+}

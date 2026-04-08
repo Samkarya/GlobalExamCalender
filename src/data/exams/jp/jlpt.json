@@ -1,0 +1,70 @@
+{
+  "id": "jlpt",
+  "name": "Japanese Language Proficiency Test",
+  "short_name": "JLPT",
+  "country": "Global",
+  "country_code": "GLOBAL",
+  "region": "Global",
+  "category": "language",
+  "conducting_body": "Japan Foundation / Japan Educational Exchanges and Services (JEES)",
+  "frequency": "biannual",
+  "official_url": "https://www.jlpt.jp/",
+  "tags": [
+    "japanese",
+    "language-proficiency",
+    "study-abroad",
+    "n1-n5",
+    "certification"
+  ],
+  "eligibility": "Non-native Japanese speakers (no age or academic restrictions).",
+  "dates": [
+    {
+      "type": "registration_start",
+      "date": "2026-03-01",
+      "label": "July Session Registration Opens",
+      "tentative": true
+    },
+    {
+      "type": "registration_end",
+      "date": "2026-03-31",
+      "label": "July Session Registration Closes",
+      "tentative": false
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-07-05",
+      "label": "JLPT July Session (First Sunday)",
+      "tentative": false
+    },
+    {
+      "type": "result",
+      "date": "2026-08-25",
+      "label": "July Session Online Results",
+      "tentative": true
+    },
+    {
+      "type": "registration_start",
+      "date": "2026-08-15",
+      "label": "December Session Registration Opens",
+      "tentative": true
+    },
+    {
+      "type": "registration_end",
+      "date": "2026-09-15",
+      "label": "December Session Registration Closes",
+      "tentative": true
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-12-06",
+      "label": "JLPT December Session (First Sunday)",
+      "tentative": false
+    },
+    {
+      "type": "result",
+      "date": "2027-01-25",
+      "label": "December Session Online Results",
+      "tentative": true
+    }
+  ]
+}

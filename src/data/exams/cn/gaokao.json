@@ -1,5 +1,5 @@
 {
-  "id": "gaokao-2026",
+  "id": "gaokao",
   "name": "National College Entrance Examination",
   "short_name": "Gaokao",
   "country": "China",
@@ -8,44 +8,50 @@
   "category": "entrance",
   "conducting_body": "Ministry of Education China",
   "frequency": "annual",
-  "official_url": "https://www.moe.gov.cn",
-  "tags": [
+  "official_url": "http://en.moe.gov.cn",
+  "tags":[
     "university",
     "china",
     "undergraduate",
     "national"
   ],
   "eligibility": "High school graduates in China",
-  "dates": [
+  "dates":[
     {
       "type": "registration_start",
-      "date": "2026-03-01",
-      "label": "Candidate Registration"
+      "date": "2025-11-01",
+      "label": "Candidate Registration Opens",
+      "tentative": true
     },
     {
       "type": "registration_end",
       "date": "2026-03-31",
-      "label": "Registration Closes"
+      "label": "Registration Closes",
+      "tentative": true
     },
     {
       "type": "admit_card",
       "date": "2026-05-25",
-      "label": "Admit Card"
+      "label": "Admit Card Release",
+      "tentative": true
     },
     {
       "type": "exam_date",
       "date": "2026-06-07",
-      "label": "Gaokao Day 1"
+      "label": "Gaokao Day 1",
+      "tentative": false
     },
     {
       "type": "exam_date",
       "date": "2026-06-08",
-      "label": "Gaokao Day 2"
+      "label": "Gaokao Day 2",
+      "tentative": false
     },
     {
       "type": "result",
-      "date": "2026-06-23",
-      "label": "Results Published"
+      "date": "2026-06-25",
+      "label": "Results Published",
+      "tentative": true
     }
   ]
 }

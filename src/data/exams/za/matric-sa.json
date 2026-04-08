@@ -1,0 +1,52 @@
+{
+  "id": "matric-sa",
+  "name": "National Senior Certificate (Matric)",
+  "short_name": "Matric NSC",
+  "country": "South Africa",
+  "country_code": "ZA",
+  "region": "Africa",
+  "category": "academic",
+  "conducting_body": "Department of Basic Education",
+  "frequency": "annual",
+  "official_url": "https://www.education.gov.za",
+  "tags": [
+    "matric",
+    "secondary education",
+    "nsc",
+    "caps",
+    "south africa"
+  ],
+  "eligibility": "Grade 12 students or individuals with a Grade 11/equivalent certificate and a valid SBA record.",
+  "dates": [
+    {
+      "type": "registration_end",
+      "date": "2026-03-13",
+      "label": "Final Registration Deadline",
+      "tentative": false
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-10-26",
+      "label": "NSC Final Examinations Begin",
+      "tentative": false
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-12-04",
+      "label": "NSC Final Examinations End",
+      "tentative": false
+    },
+    {
+      "type": "result",
+      "date": "2027-01-14",
+      "label": "National Release of Results",
+      "tentative": true
+    },
+    {
+      "type": "result",
+      "date": "2027-01-15",
+      "label": "School-Level Result Collection",
+      "tentative": true
+    }
+  ]
+}

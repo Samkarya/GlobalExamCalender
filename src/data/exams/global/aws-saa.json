@@ -1,0 +1,39 @@
+{
+  "id": "aws-saa",
+  "name": "AWS Certified Solutions Architect - Associate",
+  "short_name": "AWS SAA",
+  "country": "Global",
+  "country_code": "GLOBAL",
+  "region": "Global",
+  "category": "professional",
+  "conducting_body": "Amazon Web Services (AWS)",
+  "frequency": "on-demand",
+  "official_url": "https://aws.amazon.com/certification/certified-solutions-architect-associate/",
+  "tags":[
+    "cloud",
+    "aws",
+    "certification",
+    "it"
+  ],
+  "eligibility": "Familiarity with AWS services (AWS recommends 1+ year of hands-on experience)",
+  "dates":[
+    {
+      "type": "registration_start",
+      "date": "2026-01-01",
+      "label": "Registration Open Year-Round",
+      "tentative": false
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-12-31",
+      "label": "Exam Available On-Demand Year-Round",
+      "tentative": false
+    },
+    {
+      "type": "result",
+      "date": "2026-12-31",
+      "label": "Results Declared Typically within 5 Business Days",
+      "tentative": true
+    }
+  ]
+}

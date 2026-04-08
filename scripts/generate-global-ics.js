@@ -47,7 +47,17 @@ function escapeICS(str) {
 files.forEach(file => {
     try {
         const data = JSON.parse(fs.readFileSync(file, 'utf8'));
+        const now = new Date();
+        const currentYear = now.getFullYear();
+        const minYear = currentYear - 1;
+        const maxYear = currentYear + 1;
+
         data.dates?.forEach(event => {
+            const eventYear = new Date(event.date).getFullYear();
+
+            // Sliding Window: (Past Year, Current, Future Year)
+            if (eventYear < minYear || eventYear > maxYear) return;
+
             const dt = event.date.replace(/-/g, '');
             const summary = `${data.short_name} - ${event.label}`;
             const description = `Official URL: ${data.official_url}\\nView more details on Global Exam Calendar.`;

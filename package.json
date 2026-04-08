@@ -21,6 +21,7 @@
     "predev": "node scripts/generate-global-ics.js",
     "dev": "vite",
     "build": "node scripts/generate-global-ics.js && vite build",
+    "clean": "node scripts/housekeeping.js",
     "lint": "eslint .",
     "preview": "vite preview"
   },

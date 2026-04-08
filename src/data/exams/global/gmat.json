@@ -1,0 +1,39 @@
+{
+  "id": "gmat",
+  "name": "Graduate Management Admission Test",
+  "short_name": "GMAT",
+  "country": "Global",
+  "country_code": "GLOBAL",
+  "region": "Global",
+  "category": "entrance",
+  "conducting_body": "Graduate Management Admission Council (GMAC)",
+  "frequency": "on-demand",
+  "official_url": "https://www.mba.com/exams/gmat",
+  "tags":[
+    "mba",
+    "business",
+    "management",
+    "global"
+  ],
+  "eligibility": "Minimum 18 years of age (13-17 years with parental consent)",
+  "dates":[
+    {
+      "type": "registration_start",
+      "date": "2026-01-01",
+      "label": "Year-Round Registration Starts",
+      "tentative": false
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-12-31",
+      "label": "GMAT Available Year-Round (On-Demand)",
+      "tentative": false
+    },
+    {
+      "type": "result",
+      "date": "2026-12-31",
+      "label": "Unofficial Results (Available Immediately After Exam)",
+      "tentative": false
+    }
+  ]
+}

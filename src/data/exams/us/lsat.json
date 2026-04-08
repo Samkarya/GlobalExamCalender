@@ -1,0 +1,75 @@
+{
+  "id": "lsat",
+  "name": "Law School Admission Test",
+  "short_name": "LSAT",
+  "country": "USA",
+  "country_code": "US",
+  "region": "Americas",
+  "category": "entrance",
+  "conducting_body": "Law School Admission Council",
+  "frequency": "8 times per year",
+  "official_url": "https://www.lsac.org",
+  "tags": [
+    "law",
+    "jd",
+    "legal-education",
+    "admissions"
+  ],
+  "eligibility": "Varies by law school; typically requires a bachelor's degree or being in the final year of undergraduate study.",
+  "dates": [
+    {
+      "type": "registration_end",
+      "date": "2026-02-26",
+      "label": "Registration Deadline (April Exam)"
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-04-09",
+      "label": "LSAT April 2026 Window Begins",
+      "tentative": false
+    },
+    {
+      "type": "result",
+      "date": "2026-04-29",
+      "label": "April Score Release"
+    },
+    {
+      "type": "registration_end",
+      "date": "2026-04-21",
+      "label": "Registration Deadline (June Exam)"
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-06-03",
+      "label": "LSAT June 2026 Window Begins",
+      "tentative": false
+    },
+    {
+      "type": "result",
+      "date": "2026-06-24",
+      "label": "June Score Release"
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-08-05",
+      "label": "LSAT August 2026 Window Begins",
+      "tentative": false
+    },
+    {
+      "type": "result",
+      "date": "2026-08-26",
+      "label": "August Score Release"
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-09-09",
+      "label": "LSAT September 2026 Window Begins",
+      "tentative": false
+    },
+    {
+      "type": "result",
+      "date": "2026-09-30",
+      "label": "September Score Release"
+    }
+  ]
+}

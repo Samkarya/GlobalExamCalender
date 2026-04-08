@@ -1,0 +1,43 @@
+{
+  "id": "csat-suneung",
+  "name": "College Scholastic Ability Test",
+  "short_name": "CSAT (Suneung)",
+  "country": "South Korea",
+  "country_code": "KR",
+  "region": "Asia",
+  "category": "entrance",
+  "conducting_body": "Korea Institute for Curriculum and Evaluation",
+  "frequency": "annual",
+  "official_url": "https://www.suneung.re.kr",
+  "tags": [
+    "suneung",
+    "south-korea",
+    "university-entrance",
+    "kice"
+  ],
+  "eligibility": "High school seniors, graduates, or those with equivalent recognized educational background.",
+  "dates": [
+    {
+      "type": "registration_start",
+      "date": "2026-08-24",
+      "label": "Application Period Opens"
+    },
+    {
+      "type": "registration_end",
+      "date": "2026-09-04",
+      "label": "Application Period Closes"
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-11-19",
+      "label": "CSAT Exam Day",
+      "tentative": false
+    },
+    {
+      "type": "result",
+      "date": "2026-12-11",
+      "label": "Score Report Distribution",
+      "tentative": false
+    }
+  ]
+}

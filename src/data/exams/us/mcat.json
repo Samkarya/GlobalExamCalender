@@ -1,0 +1,64 @@
+{
+  "id": "mcat",
+  "name": "Medical College Admission Test",
+  "short_name": "MCAT",
+  "country": "USA",
+  "country_code": "US",
+  "region": "Americas",
+  "category": "entrance",
+  "conducting_body": "Association of American Medical Colleges",
+  "frequency": "monthly",
+  "official_url": "https://students-residents.aamc.org/mcat",
+  "tags": ["medical", "premed", "medschool", "aamc"],
+  "eligibility": "Students intending to apply to health professions schools (MD, DO, Podiatric, Veterinary).",
+  "dates": [
+    {
+      "type": "exam_date",
+      "date": "2026-04-10",
+      "label": "MCAT Test Date (US/Canada)",
+      "tentative": false
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-05-14",
+      "label": "MCAT Test Date (US/International)",
+      "tentative": false
+    },
+    {
+      "type": "result",
+      "date": "2026-06-16",
+      "label": "Score Release (for May 14 Test)",
+      "tentative": false
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-06-19",
+      "label": "MCAT Test Date (US/Canada)",
+      "tentative": false
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-07-17",
+      "label": "MCAT Test Date (US/Canada)",
+      "tentative": false
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-08-15",
+      "label": "MCAT Test Date (US/International)",
+      "tentative": false
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-09-12",
+      "label": "Final 2026 Test Date",
+      "tentative": false
+    },
+    {
+      "type": "result",
+      "date": "2026-10-13",
+      "label": "Final Score Release",
+      "tentative": false
+    }
+  ]
+}

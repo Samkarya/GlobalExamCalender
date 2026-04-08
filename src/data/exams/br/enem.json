@@ -1,0 +1,50 @@
+{
+  "id": "enem",
+  "name": "Exame Nacional do Ensino Médio",
+  "short_name": "ENEM",
+  "country": "Brazil",
+  "country_code": "BR",
+  "region": "South America",
+  "category": "entrance",
+  "conducting_body": "INEP (Instituto Nacional de Estudos e Pesquisas Educacionais Anísio Teixeira)",
+  "frequency": "annual",
+  "official_url": "https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enem",
+  "tags":[
+    "brazil",
+    "university",
+    "undergraduate"
+  ],
+  "eligibility": "High school graduates or final-year high school students",
+  "dates":[
+    {
+      "type": "registration_start",
+      "date": "2026-05-25",
+      "label": "Registration Opens",
+      "tentative": true
+    },
+    {
+      "type": "registration_end",
+      "date": "2026-06-07",
+      "label": "Registration Closes",
+      "tentative": true
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-11-01",
+      "label": "ENEM Day 1",
+      "tentative": true
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-11-08",
+      "label": "ENEM Day 2",
+      "tentative": true
+    },
+    {
+      "type": "result",
+      "date": "2027-01-13",
+      "label": "ENEM Results",
+      "tentative": true
+    }
+  ]
+}

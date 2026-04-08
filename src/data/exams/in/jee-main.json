@@ -1,0 +1,75 @@
+{
+  "id": "jee-main",
+  "name": "Joint Entrance Examination Main",
+  "short_name": "JEE Main",
+  "country": "India",
+  "country_code": "IN",
+  "region": "Asia",
+  "category": "entrance",
+  "conducting_body": "National Testing Agency",
+  "frequency": "biannual",
+  "official_url": "https://jeemain.nta.ac.in",
+  "tags": ["engineering", "iit", "nit", "b.tech", "stem"],
+  "eligibility": "Class 12 pass/appearing in 2026 with Physics and Mathematics; no upper age limit.",
+  "dates": [
+    {
+      "type": "registration_start",
+      "date": "2025-10-31",
+      "label": "Session 1 Registration Opens"
+    },
+    {
+      "type": "registration_end",
+      "date": "2025-11-27",
+      "label": "Session 1 Registration Closes"
+    },
+    {
+      "type": "admit_card",
+      "date": "2026-01-17",
+      "label": "Admit Card - Session 1"
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-01-21",
+      "label": "JEE Main Session 1 Begins",
+      "tentative": false
+    },
+    {
+      "type": "result",
+      "date": "2026-02-16",
+      "label": "Session 1 Result (Paper 1)"
+    },
+    {
+      "type": "registration_start",
+      "date": "2026-02-01",
+      "label": "Session 2 Registration Opens"
+    },
+    {
+      "type": "registration_end",
+      "date": "2026-03-13",
+      "label": "Session 2 Final Reopened Deadline"
+    },
+    {
+      "type": "admit_card",
+      "date": "2026-03-29",
+      "label": "Admit Card - Session 2"
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-04-02",
+      "label": "JEE Main Session 2 Begins",
+      "tentative": false
+    },
+    {
+      "type": "result",
+      "date": "2026-04-20",
+      "label": "Session 2 Final Results & Ranks",
+      "tentative": true
+    },
+    {
+      "type": "counselling",
+      "date": "2026-06-10",
+      "label": "JoSAA Counselling Starts",
+      "tentative": true
+    }
+  ]
+}

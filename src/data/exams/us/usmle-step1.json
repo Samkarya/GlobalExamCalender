@@ -1,0 +1,33 @@
+{
+  "id": "usmle-step-1",
+  "name": "United States Medical Licensing Examination Step 1",
+  "short_name": "USMLE Step 1",
+  "country": "USA",
+  "country_code": "US",
+  "region": "Americas",
+  "category": "professional",
+  "conducting_body": "FSMB & NBME",
+  "frequency": "monthly",
+  "official_url": "https://www.usmle.org",
+  "tags": ["medical", "licensing", "residency", "usmle", "physician"],
+  "eligibility": "Medical students/graduates of LCME/COCA accredited programs (US/Canada) or WDOMS-listed schools meeting ECFMG criteria.",
+  "dates": [
+    {
+      "type": "registration_start",
+      "date": "2025-11-01",
+      "label": "2026 Eligibility Period Applications Open"
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-01-12",
+      "label": "Testing Resumes (Post-Transition)",
+      "tentative": false
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-01-01",
+      "label": "Year-Round CBT Scheduling",
+      "tentative": false
+    }
+  ]
+}

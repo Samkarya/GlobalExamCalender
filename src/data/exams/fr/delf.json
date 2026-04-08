@@ -1,0 +1,39 @@
+{
+  "id": "delf-dalf",
+  "name": "Diplôme d'études en langue française",
+  "short_name": "DELF/DALF",
+  "country": "Global",
+  "country_code": "GLOBAL",
+  "region": "Global",
+  "category": "language",
+  "conducting_body": "France Éducation international",
+  "frequency": "multiple",
+  "official_url": "https://www.france-education-international.fr/delf-dalf",
+  "tags":[
+    "french",
+    "language proficiency",
+    "study abroad",
+    "europe"
+  ],
+  "eligibility": "Non-native French speakers",
+  "dates":[
+    {
+      "type": "exam_date",
+      "date": "2026-03-03",
+      "label": "March Session (DELF/DALF Starts)",
+      "tentative": false
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-06-09",
+      "label": "June Session (DELF/DALF Starts)",
+      "tentative": false
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-11-03",
+      "label": "November Session (DELF/DALF Starts)",
+      "tentative": false
+    }
+  ]
+}

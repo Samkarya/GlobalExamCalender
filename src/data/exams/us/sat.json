@@ -1,0 +1,88 @@
+{
+  "id": "sat-global",
+  "name": "Scholastic Assessment Test",
+  "short_name": "SAT",
+  "country": "Global",
+  "country_code": "GLOBAL",
+  "region": "Global",
+  "category": "entrance",
+  "conducting_body": "College Board",
+  "frequency": "monthly",
+  "official_url": "https://satsuite.collegeboard.org",
+  "tags": ["undergraduate", "university", "college-admissions", "digital-sat"],
+  "eligibility": "Open to all students; primarily taken by high school juniors and seniors.",
+  "dates": [
+    {
+      "type": "registration_end",
+      "date": "2026-02-27",
+      "label": "March Registration Deadline"
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-03-14",
+      "label": "SAT March 2026",
+      "tentative": false
+    },
+    {
+      "type": "result",
+      "date": "2026-03-27",
+      "label": "March Scores Released"
+    },
+    {
+      "type": "registration_end",
+      "date": "2026-04-17",
+      "label": "May Registration Deadline"
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-05-02",
+      "label": "SAT May 2026",
+      "tentative": false
+    },
+    {
+      "type": "result",
+      "date": "2026-05-15",
+      "label": "May Scores Released"
+    },
+    {
+      "type": "registration_end",
+      "date": "2026-05-22",
+      "label": "June Registration Deadline"
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-06-06",
+      "label": "SAT June 2026",
+      "tentative": false
+    },
+    {
+      "type": "result",
+      "date": "2026-06-19",
+      "label": "June Scores Released"
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-08-22",
+      "label": "SAT August 2026",
+      "tentative": false
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-10-03",
+      "label": "SAT October 2026",
+      "tentative": false
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-11-07",
+      "label": "SAT November 2026",
+      "tentative": false
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-12-05",
+      "label": "SAT December 2026",
+      "tentative": false
+    }
+  ]
+}

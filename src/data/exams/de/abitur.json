@@ -1,0 +1,45 @@
+{
+  "id": "abitur",
+  "name": "Abitur (Allgemeine Hochschulreife)",
+  "short_name": "Abitur",
+  "country": "Germany",
+  "country_code": "DE",
+  "region": "Europe",
+  "category": "academic",
+  "conducting_body": "Kultusministerkonferenz (KMK)",
+  "frequency": "annual",
+  "official_url": "https://www.kmk.org",
+  "tags": [
+    "germany",
+    "university-entrance",
+    "secondary",
+    "europe"
+  ],
+  "eligibility": "Successful completion of the gymnasiale Oberstufe (upper secondary school) in Germany",
+  "dates":[
+    {
+      "type": "exam_date",
+      "date": "2026-04-15",
+      "label": "Written Exams Begin (State Dependent)",
+      "tentative": true
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-05-19",
+      "label": "Written Exams End (State Dependent)",
+      "tentative": true
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-06-15",
+      "label": "Oral Exams (State Dependent)",
+      "tentative": true
+    },
+    {
+      "type": "result",
+      "date": "2026-07-01",
+      "label": "Certificates Issued (General Deadline)",
+      "tentative": true
+    }
+  ]
+}

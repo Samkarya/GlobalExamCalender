@@ -1,0 +1,69 @@
+{
+  "id": "gate",
+  "name": "Graduate Aptitude Test in Engineering",
+  "short_name": "GATE",
+  "country": "India",
+  "country_code": "IN",
+  "region": "Asia",
+  "category": "entrance",
+  "conducting_body": "IIT Guwahati",
+  "frequency": "annual",
+  "official_url": "https://gate2026.iitg.ac.in",
+  "tags":[
+    "engineering",
+    "psu",
+    "mtech",
+    "research"
+  ],
+  "eligibility": "B.E/B.Tech/M.Sc or final year students",
+  "dates":[
+    {
+      "type": "registration_start",
+      "date": "2025-08-25",
+      "label": "Online Registration Opens",
+      "tentative": false
+    },
+    {
+      "type": "registration_end",
+      "date": "2025-09-25",
+      "label": "Online Registration Closes (Without Late Fee)",
+      "tentative": false
+    },
+    {
+      "type": "admit_card",
+      "date": "2026-01-02",
+      "label": "Admit Card Download Begins",
+      "tentative": false
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-02-07",
+      "label": "GATE 2026 Exam (Day 1)",
+      "tentative": false
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-02-08",
+      "label": "GATE 2026 Exam (Day 2)",
+      "tentative": false
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-02-14",
+      "label": "GATE 2026 Exam (Day 3)",
+      "tentative": false
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-02-15",
+      "label": "GATE 2026 Exam (Day 4)",
+      "tentative": false
+    },
+    {
+      "type": "result",
+      "date": "2026-03-19",
+      "label": "Result Announcement",
+      "tentative": false
+    }
+  ]
+}

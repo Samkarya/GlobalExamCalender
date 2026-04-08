@@ -37,9 +37,14 @@ export default function Footer() {
             </div>
 
             <div className="footer-bottom">
+                <div className="footer-credits">
+                    Made with ❤️ by <a href="https://github.com/samkarya" target="_blank" rel="noopener noreferrer">samkarya</a>
+                    <span className="separator-dot">•</span>
+                    and <a href="https://examoven.com" target="_blank" rel="noopener noreferrer">ExamOven</a>
+                </div>
                 <div className="footer-socials">
-                    <a href="#" aria-label="Website"><Globe size={16} /></a>
-                    <a href="https://github.com/yourusername/global-exam-calendar" aria-label="GitHub"><GitFork size={16} /></a>
+                    <a href="https://examoven.com" aria-label="Website" target="_blank" rel="noopener noreferrer"><Globe size={16} /></a>
+                    <a href="https://github.com/samkarya" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><GitFork size={16} /></a>
                 </div>
                 <p>&copy; {new Date().getFullYear()} Global Exam Calendar. Open Source.</p>
             </div>

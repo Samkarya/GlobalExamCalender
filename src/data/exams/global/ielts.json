@@ -1,0 +1,51 @@
+{
+  "id": "ielts",
+  "name": "International English Language Testing System",
+  "short_name": "IELTS",
+  "country": "Global",
+  "country_code": "GLOBAL",
+  "region": "Global",
+  "category": "language",
+  "conducting_body": "British Council / IDP / Cambridge",
+  "frequency": "monthly",
+  "official_url": "https://www.ielts.org",
+  "tags":[
+    "english",
+    "language",
+    "immigration",
+    "study-abroad"
+  ],
+  "eligibility": "Anyone above the age of 16 with a valid passport",
+  "dates":[
+    {
+      "type": "exam_date",
+      "date": "2026-01-03",
+      "label": "IELTS Academic (Paper-Based) - January",
+      "tentative": false
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-01-10",
+      "label": "IELTS Academic & General (Paper-Based) - January",
+      "tentative": false
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-02-07",
+      "label": "IELTS Academic & General (Paper-Based) - February",
+      "tentative": false
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-02-12",
+      "label": "IELTS Academic (Paper-Based) - February",
+      "tentative": false
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-04-04",
+      "label": "IELTS Academic (Paper-Based) - April",
+      "tentative": false
+    }
+  ]
+}

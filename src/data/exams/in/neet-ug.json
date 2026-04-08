@@ -1,0 +1,50 @@
+{
+  "id": "neet-ug",
+  "name": "National Eligibility cum Entrance Test (Undergraduate)",
+  "short_name": "NEET UG",
+  "country": "India",
+  "country_code": "IN",
+  "region": "Asia",
+  "category": "entrance",
+  "conducting_body": "National Testing Agency",
+  "frequency": "annual",
+  "official_url": "https://exams.nta.ac.in/NEET",
+  "tags": ["medical", "mbbs", "bds", "ayush", "healthcare"],
+  "eligibility": "12th pass (PCB & English) with 50% aggregate (40% for SC/ST/OBC); Min 17 years by Dec 31, 2026; No upper age limit.",
+  "dates": [
+    {
+      "type": "registration_start",
+      "date": "2026-02-08",
+      "label": "Online Registration Opens"
+    },
+    {
+      "type": "registration_end",
+      "date": "2026-03-11",
+      "label": "Extended Registration Deadline"
+    },
+    {
+      "type": "admit_card",
+      "date": "2026-04-25",
+      "label": "Admit Card Release",
+      "tentative": true
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-05-03",
+      "label": "NEET UG 2026 Exam Day",
+      "tentative": false
+    },
+    {
+      "type": "result",
+      "date": "2026-06-14",
+      "label": "Result Declaration",
+      "tentative": true
+    },
+    {
+      "type": "counselling",
+      "date": "2026-07-15",
+      "label": "All India Quota Counselling Starts",
+      "tentative": true
+    }
+  ]
+}
