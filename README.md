@@ -5,7 +5,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 [![PWA Ready](https://img.shields.io/badge/PWA-ready-blueviolet.svg)](https://web.dev/progressive-web-apps/)
 
-**[View Live Application →](https://global-exam-calendar.vercel.app)** *(Link placeholder)*
+**[View Live Application →](https://samkarya.github.io/GlobalExamCalender/)**
 
 ---
 
@@ -164,5 +164,5 @@ This project is licensed under the **MIT License**. We want this data to remain 
 ---
 
 ### Built with ❤️ for students worldwide.
-*Found a bug? [Open an issue](https://github.com/yourusername/global-exam-calendar/issues). Want to chat?*
+*Found a bug? [Open an issue](https://github.com/Samkarya/GlobalExamCalender/issues). Want to chat?*
 

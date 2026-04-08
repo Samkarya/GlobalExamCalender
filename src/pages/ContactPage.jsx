@@ -17,7 +17,7 @@ export default function ContactPage() {
                         Spotted a typo or an outdated exam date? The fastest way to get it fixed is to submit an issue or a direct Pull Request on our GitHub repository.
                     </p>
                     <ul>
-                        <li><a href="https://github.com/yourusername/global-exam-calendar/issues" target="_blank" rel="noopener noreferrer">Open a GitHub Issue</a></li>
+                        <li><a href="https://github.com/Samkarya/GlobalExamCalender/issues" target="_blank" rel="noopener noreferrer">Open a GitHub Issue</a></li>
                     </ul>
                 </div>
             </main>

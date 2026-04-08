@@ -8,7 +8,10 @@ export default function SyncPage() {
     const [copied, setCopied] = useState(false);
 
     const copyLink = () => {
-        const url = `${window.location.origin}/global.ics`;
+        const baseUrl = import.meta.env.BASE_URL.endsWith('/')
+            ? import.meta.env.BASE_URL
+            : `${import.meta.env.BASE_URL}/`;
+        const url = `${window.location.origin}${baseUrl}global.ics`;
         navigator.clipboard.writeText(url);
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
@@ -36,7 +39,7 @@ export default function SyncPage() {
                         </p>
 
                         <div className="sync-actions">
-                            <a href="/global.ics" className="btn-accent sync-btn">
+                            <a href={`${import.meta.env.BASE_URL}global.ics`} className="btn-accent sync-btn">
                                 <Calendar size={18} /> Subscribe Now
                             </a>
                             <button className="btn-outline sync-btn" onClick={copyLink}>

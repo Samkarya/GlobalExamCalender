@@ -19,7 +19,7 @@ export default function Footer() {
                         <h4>Platform</h4>
                         <Link to="/">Home (Calendar)</Link>
                         <Link to="/sync">Calendar Sync</Link>
-                        <a href="https://github.com/yourusername/global-exam-calendar" target="_blank" rel="noopener noreferrer">Contribute</a>
+                        <a href="https://github.com/Samkarya/GlobalExamCalender" target="_blank" rel="noopener noreferrer">Contribute</a>
                     </div>
 
                     <div className="footer-col">

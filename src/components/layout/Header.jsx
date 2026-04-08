@@ -77,7 +77,7 @@ export default function Header() {
                     <span className="desktop-only">Export .ics</span>
                 </button>
                 <a
-                    href="https://github.com/yourusername/global-exam-calendar"
+                    href="https://github.com/Samkarya/GlobalExamCalender"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-accent"
