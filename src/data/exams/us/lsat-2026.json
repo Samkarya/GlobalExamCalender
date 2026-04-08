@@ -1,0 +1,41 @@
+{
+  "id": "lsat-2026",
+  "name": "Law School Admission Test",
+  "short_name": "LSAT",
+  "country": "USA",
+  "country_code": "US",
+  "region": "Americas",
+  "category": "entrance",
+  "conducting_body": "Law School Admission Council",
+  "frequency": "quarterly",
+  "official_url": "https://lsac.org",
+  "tags": [
+    "law",
+    "school",
+    "usa",
+    "llb"
+  ],
+  "eligibility": "Bachelor's degree",
+  "dates": [
+    {
+      "type": "exam_date",
+      "date": "2026-04-04",
+      "label": "LSAT April 2026"
+    },
+    {
+      "type": "result",
+      "date": "2026-04-25",
+      "label": "April Scores"
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-06-06",
+      "label": "LSAT June 2026"
+    },
+    {
+      "type": "result",
+      "date": "2026-06-27",
+      "label": "June Scores"
+    }
+  ]
+}

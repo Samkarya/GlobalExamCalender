@@ -1,0 +1,46 @@
+{
+  "id": "ielts-2026",
+  "name": "International English Language Testing System",
+  "short_name": "IELTS",
+  "country": "Global",
+  "country_code": "GLOBAL",
+  "region": "Global",
+  "category": "language",
+  "conducting_body": "British Council / IDP / Cambridge",
+  "frequency": "monthly",
+  "official_url": "https://ielts.org",
+  "tags": [
+    "english",
+    "language",
+    "immigration",
+    "study abroad"
+  ],
+  "eligibility": "Any candidate",
+  "dates": [
+    {
+      "type": "exam_date",
+      "date": "2026-04-11",
+      "label": "IELTS Academic - April"
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-04-25",
+      "label": "IELTS General - April"
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-05-09",
+      "label": "IELTS Academic - May"
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-05-23",
+      "label": "IELTS General - May"
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-06-13",
+      "label": "IELTS Academic - June"
+    }
+  ]
+}

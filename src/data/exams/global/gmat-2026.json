@@ -1,0 +1,36 @@
+{
+  "id": "gmat-2026",
+  "name": "Graduate Management Admission Test",
+  "short_name": "GMAT",
+  "country": "Global",
+  "country_code": "GLOBAL",
+  "region": "Global",
+  "category": "entrance",
+  "conducting_body": "GMAC",
+  "frequency": "monthly",
+  "official_url": "https://mba.com/gmat",
+  "tags": [
+    "mba",
+    "business",
+    "management",
+    "global"
+  ],
+  "eligibility": "Bachelor's degree",
+  "dates": [
+    {
+      "type": "exam_date",
+      "date": "2026-04-08",
+      "label": "GMAT Focus Edition"
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-05-06",
+      "label": "GMAT Focus Edition"
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-06-03",
+      "label": "GMAT Focus Edition"
+    }
+  ]
+}

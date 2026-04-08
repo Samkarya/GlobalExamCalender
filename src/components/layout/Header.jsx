@@ -1,3 +1,4 @@
+import { Link, useNavigate } from 'react-router-dom';
 import { useExams } from '../../context/ExamContext';
 import { useUI } from '../../context/UIContext';
 import { VIEW_MODES } from '../../constants';
@@ -13,12 +14,20 @@ import {
     FileText,
     CalendarClock,
     Download,
+    Sun,
+    Moon,
 } from 'lucide-react';
 import './Header.css';
 
 export default function Header() {
     const { stats, filteredEvents } = useExams();
-    const { currentView, setCurrentView, toggleSidebar, showPlanner, setShowPlanner } = useUI();
+    const { currentView, setCurrentView, toggleSidebar, showPlanner, setShowPlanner, theme, setTheme } = useUI();
+    const navigate = useNavigate();
+
+    const handleViewToggle = (key) => {
+        setCurrentView(key);
+        navigate('/');
+    };
 
     const viewButtons = [
         { key: VIEW_MODES.CALENDAR, label: 'Calendar', icon: <CalendarDays size={14} /> },
@@ -36,15 +45,24 @@ export default function Header() {
                 <Menu size={18} />
             </button>
 
-            <div className="logo">
+            <Link to="/" className="logo">
                 <div className="logo-dot" />
                 Global Exam <em>Calendar</em>
-            </div>
+            </Link>
 
             <div className="header-actions">
                 <button
+                    className="btn-outline"
+                    onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                    aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+                >
+                    {theme === 'dark' ? <Sun size={14} /> : <Moon size={14} />}
+                </button>
+                <button
                     className={`btn-outline ${showPlanner ? 'btn-planner-active' : ''}`}
                     onClick={() => setShowPlanner((p) => !p)}
+                    aria-label="Toggle My Planner filter"
+                    aria-pressed={showPlanner}
                 >
                     <Star size={14} />
                     <span className="desktop-only">My Planner</span>
@@ -53,6 +71,7 @@ export default function Header() {
                     className="btn-outline"
                     onClick={() => exportToICS(filteredEvents)}
                     title="Export visible events to .ics"
+                    aria-label="Export visible events to ICS format"
                 >
                     <Download size={14} />
                     <span className="desktop-only">Export .ics</span>
@@ -68,12 +87,14 @@ export default function Header() {
                 </a>
             </div>
 
-            <div className="view-toggle">
+            <div className="view-toggle" role="group" aria-label="View modes">
                 {viewButtons.map((vb) => (
                     <button
                         key={vb.key}
                         className={`view-btn ${currentView === vb.key ? 'active' : ''}`}
-                        onClick={() => setCurrentView(vb.key)}
+                        onClick={() => handleViewToggle(vb.key)}
+                        aria-label={`${vb.label} view`}
+                        aria-pressed={currentView === vb.key}
                     >
                         {vb.icon}
                         {vb.label}

@@ -1,0 +1,37 @@
+{
+  "id": "bar-exam-usa-2026",
+  "name": "Uniform Bar Examination",
+  "short_name": "UBE",
+  "country": "USA",
+  "country_code": "US",
+  "region": "Americas",
+  "category": "professional",
+  "conducting_body": "National Conference of Bar Examiners",
+  "frequency": "biannual",
+  "official_url": "https://ncbex.org",
+  "tags": [
+    "law",
+    "legal",
+    "bar",
+    "lawyer"
+  ],
+  "eligibility": "Law school graduate, JD degree",
+  "dates": [
+    {
+      "type": "exam_date",
+      "date": "2026-07-28",
+      "label": "UBE July Session Day 1"
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-07-29",
+      "label": "UBE July Session Day 2"
+    },
+    {
+      "type": "result",
+      "date": "2026-10-15",
+      "label": "July Results",
+      "tentative": true
+    }
+  ]
+}

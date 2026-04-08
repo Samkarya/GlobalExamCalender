@@ -1,0 +1,168 @@
+.sync-page-container {
+    max-width: 1000px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+    min-height: 80vh;
+}
+
+.sync-hero {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.sync-icon-circle {
+    width: 64px;
+    height: 64px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    color: var(--accent);
+    box-shadow: 0 0 20px rgba(79, 142, 247, 0.15);
+}
+
+.sync-subtitle {
+    font-size: 1.15rem;
+    color: var(--muted);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.sync-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.sync-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 2.5rem;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-sync {
+    background: linear-gradient(135deg, var(--surface), var(--surface2));
+    border-color: var(--border2);
+}
+
+.sync-card h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
+    color: var(--text);
+}
+
+.sync-card p {
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.sync-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.sync-btn {
+    padding: 1rem !important;
+    font-size: 0.95rem !important;
+    justify-content: center !important;
+}
+
+.sync-note {
+    font-size: 0.8rem !important;
+    opacity: 0.8;
+}
+
+.guide-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.step {
+    display: flex;
+    gap: 1rem;
+}
+
+.step-num {
+    width: 28px;
+    height: 28px;
+    background: var(--accent);
+    color: white;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.85rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.step-content h3 {
+    font-size: 0.95rem;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+}
+
+.step-content p {
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+.sync-faq {
+    border-top: 1px solid var(--border);
+    padding-top: 4rem;
+}
+
+.sync-faq h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    color: var(--text);
+}
+
+.faq-item {
+    margin-bottom: 2rem;
+    max-width: 800px;
+}
+
+.faq-item h3 {
+    font-size: 1.1rem;
+    color: var(--text);
+    margin-bottom: 0.8rem;
+}
+
+.faq-item p {
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.spin-slow {
+    animation: spin 6s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 900px) {
+    .sync-grid {
+        grid-template-columns: 1fr;
+    }
+}

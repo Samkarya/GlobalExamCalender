@@ -64,15 +64,28 @@ export function ExamProvider({ children, showPlannerOnly = false }) {
     const [state, dispatch] = useReducer(examReducer, initialState);
     const [plannerIds, setPlannerIds] = useLocalStorage('gec-planner', []);
 
-    // Fetch exams on mount
+    // Fetch exams dynamically at build time / run time using import.meta.glob
     useEffect(() => {
-        fetch('/data/exams.json')
-            .then((res) => {
-                if (!res.ok) throw new Error('Failed to fetch exam data');
-                return res.json();
-            })
-            .then((data) => dispatch({ type: 'SET_EXAMS', payload: data }))
-            .catch((err) => dispatch({ type: 'SET_ERROR', payload: err.message }));
+        const loadExams = async () => {
+            try {
+                // Vite's way to import multiple files. The resulting objects will be the parsed JSON
+                const modules = import.meta.glob('../data/exams/**/*.json');
+                const examsArray = [];
+
+                for (const path in modules) {
+                    const module = await modules[path]();
+                    // Some plugins return the raw JSON, some nested under default
+                    examsArray.push(module.default || module);
+                }
+
+                dispatch({ type: 'SET_EXAMS', payload: examsArray });
+            } catch (err) {
+                console.error("Error loading exams:", err);
+                dispatch({ type: 'SET_ERROR', payload: err.message || 'Failed to load exam data' });
+            }
+        };
+
+        loadExams();
     }, []);
 
     // Derived data — apply planner filter first, then standard filters

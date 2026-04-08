@@ -1,0 +1,43 @@
+{
+  "id": "abitur-2026",
+  "name": "Abitur - German University Entrance Qualification",
+  "short_name": "Abitur",
+  "country": "Germany",
+  "country_code": "DE",
+  "region": "Europe",
+  "category": "academic",
+  "conducting_body": "Kultusministerkonferenz",
+  "frequency": "annual",
+  "official_url": "https://www.kmk.org",
+  "tags": [
+    "germany",
+    "university",
+    "secondary",
+    "europe"
+  ],
+  "eligibility": "Gymnasium students in Germany",
+  "dates": [
+    {
+      "type": "exam_date",
+      "date": "2026-04-16",
+      "label": "Written Exams Begin"
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-05-08",
+      "label": "Written Exams End"
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-06-15",
+      "label": "Oral Exams",
+      "tentative": true
+    },
+    {
+      "type": "result",
+      "date": "2026-07-01",
+      "label": "Results Published",
+      "tentative": true
+    }
+  ]
+}

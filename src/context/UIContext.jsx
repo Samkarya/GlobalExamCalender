@@ -1,5 +1,6 @@
-import { createContext, useContext, useState, useCallback, useMemo } from 'react';
+import { createContext, useContext, useState, useCallback, useMemo, useEffect } from 'react';
 import { VIEW_MODES } from '../constants';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 /* ─── Context ─── */
 const UIContext = createContext(null);
@@ -12,6 +13,12 @@ export function UIProvider({ children }) {
     const [modalExam, setModalExam] = useState(null);
     const [modalFocusEvent, setModalFocusEvent] = useState(null);
     const [showPlanner, setShowPlanner] = useState(false);
+    const [theme, setTheme] = useLocalStorage('gec-theme', 'dark');
+
+    // Apply theme to document
+    useEffect(() => {
+        document.documentElement.setAttribute('data-theme', theme);
+    }, [theme]);
 
     const openModal = useCallback((exam, focusEvent = null) => {
         setModalExam(exam);
@@ -64,11 +71,13 @@ export function UIProvider({ children }) {
             closeModal,
             showPlanner,
             setShowPlanner,
+            theme,
+            setTheme,
             prevPeriod,
             nextPeriod,
             goToday,
         }),
-        [currentView, currentDate, sidebarOpen, modalExam, modalFocusEvent, showPlanner, openModal, closeModal, toggleSidebar, prevPeriod, nextPeriod, goToday]
+        [currentView, currentDate, sidebarOpen, modalExam, modalFocusEvent, showPlanner, theme, openModal, closeModal, toggleSidebar, prevPeriod, nextPeriod, goToday]
     );
 
     return <UIContext.Provider value={value}>{children}</UIContext.Provider>;

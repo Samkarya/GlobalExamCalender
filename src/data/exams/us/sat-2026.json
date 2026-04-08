@@ -1,0 +1,57 @@
+{
+  "id": "sat-2026",
+  "name": "Scholastic Assessment Test",
+  "short_name": "SAT",
+  "country": "USA",
+  "country_code": "US",
+  "region": "Americas",
+  "category": "entrance",
+  "conducting_body": "College Board",
+  "frequency": "monthly",
+  "official_url": "https://collegeboard.org",
+  "tags": [
+    "university",
+    "undergraduate",
+    "college",
+    "usa"
+  ],
+  "eligibility": "High school students",
+  "dates": [
+    {
+      "type": "exam_date",
+      "date": "2026-03-14",
+      "label": "SAT March 2026"
+    },
+    {
+      "type": "result",
+      "date": "2026-03-28",
+      "label": "March Scores Released"
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-05-02",
+      "label": "SAT May 2026"
+    },
+    {
+      "type": "result",
+      "date": "2026-05-16",
+      "label": "May Scores Released"
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-06-06",
+      "label": "SAT June 2026"
+    },
+    {
+      "type": "result",
+      "date": "2026-06-20",
+      "label": "June Scores Released"
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-08-29",
+      "label": "SAT August 2026",
+      "tentative": true
+    }
+  ]
+}

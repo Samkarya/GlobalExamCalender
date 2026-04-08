@@ -1,0 +1,51 @@
+{
+  "id": "neet-ug-2026",
+  "name": "National Eligibility cum Entrance Test (UG)",
+  "short_name": "NEET UG",
+  "country": "India",
+  "country_code": "IN",
+  "region": "Asia",
+  "category": "entrance",
+  "conducting_body": "National Testing Agency",
+  "frequency": "annual",
+  "official_url": "https://neet.nta.nic.in",
+  "tags": [
+    "medical",
+    "mbbs",
+    "bds",
+    "healthcare"
+  ],
+  "eligibility": "Class 12 pass, PCB, Age >= 17",
+  "dates": [
+    {
+      "type": "registration_start",
+      "date": "2026-03-10",
+      "label": "Registration Opens"
+    },
+    {
+      "type": "registration_end",
+      "date": "2026-04-05",
+      "label": "Registration Closes"
+    },
+    {
+      "type": "admit_card",
+      "date": "2026-05-01",
+      "label": "Admit Card Release"
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-05-17",
+      "label": "NEET UG Exam Day"
+    },
+    {
+      "type": "result",
+      "date": "2026-06-14",
+      "label": "Result Declaration"
+    },
+    {
+      "type": "counselling",
+      "date": "2026-07-01",
+      "label": "Counselling Begins"
+    }
+  ]
+}

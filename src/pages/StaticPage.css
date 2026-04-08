@@ -1,0 +1,61 @@
+.static-page-container {
+    max-width: 800px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+    min-height: 60vh;
+}
+
+.static-page-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--text);
+}
+
+.static-page-content {
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 1.05rem;
+}
+
+.static-page-content h2 {
+    font-family: 'Outfit', sans-serif;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--text);
+}
+
+.static-page-content p {
+    margin-bottom: 1rem;
+    color: var(--muted);
+}
+
+.static-page-content ul {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+    color: var(--muted);
+}
+
+.static-page-content li {
+    margin-bottom: 0.5rem;
+}
+
+.static-page-content a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.static-page-content a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 700px) {
+    .static-page-container {
+        margin: 2rem auto;
+        padding: 0 1.5rem;
+    }
+
+    .static-page-title {
+        font-size: 2rem;
+    }
+}

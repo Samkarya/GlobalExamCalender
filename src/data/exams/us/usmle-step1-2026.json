@@ -1,0 +1,36 @@
+{
+  "id": "usmle-step1-2026",
+  "name": "United States Medical Licensing Examination Step 1",
+  "short_name": "USMLE Step 1",
+  "country": "USA",
+  "country_code": "US",
+  "region": "Americas",
+  "category": "professional",
+  "conducting_body": "NBME & FSMB",
+  "frequency": "monthly",
+  "official_url": "https://www.usmle.org",
+  "tags": [
+    "medical",
+    "licensing",
+    "doctor",
+    "usa"
+  ],
+  "eligibility": "Medical students or graduates with ECFMG certification",
+  "dates": [
+    {
+      "type": "exam_date",
+      "date": "2026-03-01",
+      "label": "Step 1 CBT (Year-Round)"
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-06-01",
+      "label": "Step 1 CBT (Year-Round)"
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-09-01",
+      "label": "Step 1 CBT (Year-Round)"
+    }
+  ]
+}

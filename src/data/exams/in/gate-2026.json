@@ -1,0 +1,51 @@
+{
+  "id": "gate-2026",
+  "name": "Graduate Aptitude Test in Engineering",
+  "short_name": "GATE",
+  "country": "India",
+  "country_code": "IN",
+  "region": "Asia",
+  "category": "entrance",
+  "conducting_body": "IIT Delhi (2026)",
+  "frequency": "annual",
+  "official_url": "https://gate2026.iitd.ac.in",
+  "tags": [
+    "engineering",
+    "psu",
+    "m.tech",
+    "research"
+  ],
+  "eligibility": "B.E/B.Tech/M.Sc or final year",
+  "dates": [
+    {
+      "type": "registration_start",
+      "date": "2025-09-01",
+      "label": "Application Opens"
+    },
+    {
+      "type": "registration_end",
+      "date": "2025-10-10",
+      "label": "Application Closes"
+    },
+    {
+      "type": "admit_card",
+      "date": "2026-01-10",
+      "label": "Admit Card Download"
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-02-01",
+      "label": "GATE 2026 (Paper 1)"
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-02-02",
+      "label": "GATE 2026 (Paper 2)"
+    },
+    {
+      "type": "result",
+      "date": "2026-03-19",
+      "label": "Result Announced"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "id": "aws-saa-2026",
+  "name": "AWS Solutions Architect Associate",
+  "short_name": "AWS SAA",
+  "country": "Global",
+  "country_code": "GLOBAL",
+  "region": "Global",
+  "category": "professional",
+  "conducting_body": "Amazon Web Services",
+  "frequency": "monthly",
+  "official_url": "https://aws.amazon.com/certification",
+  "tags": [
+    "cloud",
+    "aws",
+    "it",
+    "certification",
+    "devops"
+  ],
+  "eligibility": "1+ year hands-on experience with AWS",
+  "dates": [
+    {
+      "type": "exam_date",
+      "date": "2026-04-01",
+      "label": "CBT Available Year-Round"
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-07-01",
+      "label": "CBT Available Year-Round"
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-10-01",
+      "label": "CBT Available Year-Round"
+    }
+  ]
+}

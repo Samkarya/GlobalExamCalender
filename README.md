@@ -60,19 +60,38 @@ src/
 ├── App.jsx               # Root component
 ├── main.jsx              # Entry point
 └── index.css             # Design system & tokens
-public/
-└── data/
-    └── exams.json        # Exam data (open format)
+```
+
+## Data Architecture
+
+Instead of a monolithic JSON file, exams are completely decoupled. Each exam gets its own JSON file organized by country code under `src/data/exams/`. At build time, Vite automatically combines all these files using `import.meta.glob`.
+
+This prevents merge conflicts and makes contributing incredibly easy.
+
+```
+src/data/exams/
+├── in/
+│   ├── upsc-cse-2026.json
+│   ├── jee-main-2026.json
+│   └── ...
+├── us/
+│   ├── sat-2026.json
+│   ├── lsat-2026.json
+│   └── ...
+└── global/
+    ├── gre-general-2026.json
+    └── ...
 ```
 
 ## Contributing
 
-We welcome contributions! To add an exam:
+We welcome contributions! To add a new exam:
 
 1. Fork the repository
-2. Edit `public/data/exams.json`
-3. Follow the existing JSON schema
-4. Submit a pull request
+2. Find or create the ISO country code directory in `src/data/exams/` (e.g., `src/data/exams/uk/`)
+3. Create a new `.json` file for the exam (e.g., `a-levels-2026.json`)
+4. Fill in the required fields following the schema below
+5. Submit a pull request
 
 ### Exam Data Schema
 

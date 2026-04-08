@@ -1,0 +1,36 @@
+{
+  "id": "pmp-2026",
+  "name": "Project Management Professional",
+  "short_name": "PMP",
+  "country": "Global",
+  "country_code": "GLOBAL",
+  "region": "Global",
+  "category": "professional",
+  "conducting_body": "Project Management Institute (PMI)",
+  "frequency": "monthly",
+  "official_url": "https://www.pmi.org",
+  "tags": [
+    "project management",
+    "pmp",
+    "professional",
+    "certification"
+  ],
+  "eligibility": "4-year degree + 3 years PM experience, or 36 months experience",
+  "dates": [
+    {
+      "type": "exam_date",
+      "date": "2026-04-14",
+      "label": "PMP CBT Available (Ongoing)"
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-07-01",
+      "label": "PMP CBT Available (Ongoing)"
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-10-01",
+      "label": "PMP CBT Available (Ongoing)"
+    }
+  ]
+}

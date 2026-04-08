@@ -1,0 +1,36 @@
+{
+  "id": "delf-2026",
+  "name": "Diplome d'Etudes en Langue Francaise",
+  "short_name": "DELF/DALF",
+  "country": "France",
+  "country_code": "FR",
+  "region": "Europe",
+  "category": "language",
+  "conducting_body": "France Education International",
+  "frequency": "biannual",
+  "official_url": "https://delfdalf.fr",
+  "tags": [
+    "french",
+    "language",
+    "france",
+    "europe"
+  ],
+  "eligibility": "Open to all",
+  "dates": [
+    {
+      "type": "exam_date",
+      "date": "2026-03-21",
+      "label": "DELF Spring Session"
+    },
+    {
+      "type": "result",
+      "date": "2026-04-30",
+      "label": "Spring Results"
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-10-17",
+      "label": "DELF Autumn Session"
+    }
+  ]
+}

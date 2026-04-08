@@ -26,7 +26,7 @@
 }
 
 .sidebar-close-btn {
-    display: none;
+    display: none !important;
 }
 
 .sidebar-section-title {
@@ -91,6 +91,12 @@
     transition: all 0.18s;
     user-select: none;
     border: 1px solid transparent;
+    /* Button resets */
+    background: transparent;
+    color: inherit;
+    font-family: inherit;
+    text-align: left;
+    width: 100%;
 }
 
 .filter-chip:hover {
@@ -134,6 +140,12 @@
     font-size: 0.83rem;
     transition: all 0.18s;
     border: 1px solid transparent;
+    /* Button resets */
+    background: transparent;
+    color: inherit;
+    font-family: inherit;
+    text-align: left;
+    width: 100%;
 }
 
 .flag-chip:hover {
@@ -184,6 +196,9 @@
     color: var(--accent);
     cursor: pointer;
     transition: all 0.2s;
+    /* Button resets */
+    font-family: inherit;
+    text-align: left;
 }
 
 .active-tag:hover {
@@ -290,7 +305,7 @@
     }
 
     .sidebar-close-btn {
-        display: flex;
+        display: flex !important;
         width: 28px;
         height: 28px;
     }
@@ -302,4 +317,33 @@
         background: rgba(0, 0, 0, 0.5);
         z-index: 299;
     }
+}
+
+.sidebar-footer-links {
+    margin-top: 0.5rem;
+}
+
+.sidebar-footer-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.8rem 1rem;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.sidebar-footer-link:hover {
+    border-color: var(--accent);
+    background: var(--surface);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-footer-link span {
+    font-weight: 500;
 }

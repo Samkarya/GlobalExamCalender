@@ -1,0 +1,711 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//GlobalExamCalendar//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-PUBLISHED-TTL:PT12H
+X-WR-CALNAME:Global Exam Calendar
+X-WR-TIMEZONE:UTC
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20261012
+SUMMARY:ATAR/HSC - HSC Written Exams Begin (NSW)
+DESCRIPTION:Official URL: https://www.uac.edu.au\\nView more details on Global Exam Calendar.
+UID:atar-2026-exam_date-20261012@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20261106
+SUMMARY:ATAR/HSC - HSC Written Exams End (NSW)
+DESCRIPTION:Official URL: https://www.uac.edu.au\\nView more details on Global Exam Calendar.
+UID:atar-2026-exam_date-20261106@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20261217
+SUMMARY:ATAR/HSC - ATAR Released
+DESCRIPTION:Official URL: https://www.uac.edu.au\\nView more details on Global Exam Calendar.
+UID:atar-2026-result-20261217@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260525
+SUMMARY:ENEM - Registration Opens
+DESCRIPTION:Official URL: https://enem.inep.gov.br\\nView more details on Global Exam Calendar.
+UID:enem-2026-registration_start-20260525@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260607
+SUMMARY:ENEM - Registration Closes
+DESCRIPTION:Official URL: https://enem.inep.gov.br\\nView more details on Global Exam Calendar.
+UID:enem-2026-registration_end-20260607@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20261101
+SUMMARY:ENEM - ENEM Day 1
+DESCRIPTION:Official URL: https://enem.inep.gov.br\\nView more details on Global Exam Calendar.
+UID:enem-2026-exam_date-20261101@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20261108
+SUMMARY:ENEM - ENEM Day 2
+DESCRIPTION:Official URL: https://enem.inep.gov.br\\nView more details on Global Exam Calendar.
+UID:enem-2026-exam_date-20261108@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20270113
+SUMMARY:ENEM - ENEM Results
+DESCRIPTION:Official URL: https://enem.inep.gov.br\\nView more details on Global Exam Calendar.
+UID:enem-2026-result-20270113@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260301
+SUMMARY:Gaokao - Candidate Registration
+DESCRIPTION:Official URL: https://www.moe.gov.cn\\nView more details on Global Exam Calendar.
+UID:gaokao-2026-registration_start-20260301@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260331
+SUMMARY:Gaokao - Registration Closes
+DESCRIPTION:Official URL: https://www.moe.gov.cn\\nView more details on Global Exam Calendar.
+UID:gaokao-2026-registration_end-20260331@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260525
+SUMMARY:Gaokao - Admit Card
+DESCRIPTION:Official URL: https://www.moe.gov.cn\\nView more details on Global Exam Calendar.
+UID:gaokao-2026-admit_card-20260525@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260607
+SUMMARY:Gaokao - Gaokao Day 1
+DESCRIPTION:Official URL: https://www.moe.gov.cn\\nView more details on Global Exam Calendar.
+UID:gaokao-2026-exam_date-20260607@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260608
+SUMMARY:Gaokao - Gaokao Day 2
+DESCRIPTION:Official URL: https://www.moe.gov.cn\\nView more details on Global Exam Calendar.
+UID:gaokao-2026-exam_date-20260608@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260623
+SUMMARY:Gaokao - Results Published
+DESCRIPTION:Official URL: https://www.moe.gov.cn\\nView more details on Global Exam Calendar.
+UID:gaokao-2026-result-20260623@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260416
+SUMMARY:Abitur - Written Exams Begin
+DESCRIPTION:Official URL: https://www.kmk.org\\nView more details on Global Exam Calendar.
+UID:abitur-2026-exam_date-20260416@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260508
+SUMMARY:Abitur - Written Exams End
+DESCRIPTION:Official URL: https://www.kmk.org\\nView more details on Global Exam Calendar.
+UID:abitur-2026-exam_date-20260508@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260615
+SUMMARY:Abitur - Oral Exams
+DESCRIPTION:Official URL: https://www.kmk.org\\nView more details on Global Exam Calendar.
+UID:abitur-2026-exam_date-20260615@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260701
+SUMMARY:Abitur - Results Published
+DESCRIPTION:Official URL: https://www.kmk.org\\nView more details on Global Exam Calendar.
+UID:abitur-2026-result-20260701@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260321
+SUMMARY:DELF/DALF - DELF Spring Session
+DESCRIPTION:Official URL: https://delfdalf.fr\\nView more details on Global Exam Calendar.
+UID:delf-2026-exam_date-20260321@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260430
+SUMMARY:DELF/DALF - Spring Results
+DESCRIPTION:Official URL: https://delfdalf.fr\\nView more details on Global Exam Calendar.
+UID:delf-2026-result-20260430@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20261017
+SUMMARY:DELF/DALF - DELF Autumn Session
+DESCRIPTION:Official URL: https://delfdalf.fr\\nView more details on Global Exam Calendar.
+UID:delf-2026-exam_date-20261017@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260511
+SUMMARY:A-Levels - A-Level Exams Begin
+DESCRIPTION:Official URL: https://www.aqa.org.uk\\nView more details on Global Exam Calendar.
+UID:a-levels-2026-exam_date-20260511@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260626
+SUMMARY:A-Levels - A-Level Exams End
+DESCRIPTION:Official URL: https://www.aqa.org.uk\\nView more details on Global Exam Calendar.
+UID:a-levels-2026-exam_date-20260626@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260813
+SUMMARY:A-Levels - A-Level Results Day
+DESCRIPTION:Official URL: https://www.aqa.org.uk\\nView more details on Global Exam Calendar.
+UID:a-levels-2026-result-20260813@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260401
+SUMMARY:AWS SAA - CBT Available Year-Round
+DESCRIPTION:Official URL: https://aws.amazon.com/certification\\nView more details on Global Exam Calendar.
+UID:aws-saa-2026-exam_date-20260401@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260701
+SUMMARY:AWS SAA - CBT Available Year-Round
+DESCRIPTION:Official URL: https://aws.amazon.com/certification\\nView more details on Global Exam Calendar.
+UID:aws-saa-2026-exam_date-20260701@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20261001
+SUMMARY:AWS SAA - CBT Available Year-Round
+DESCRIPTION:Official URL: https://aws.amazon.com/certification\\nView more details on Global Exam Calendar.
+UID:aws-saa-2026-exam_date-20261001@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260401
+SUMMARY:CFA L1 - Feb Window Registration Opens
+DESCRIPTION:Official URL: https://cfainstitute.org\\nView more details on Global Exam Calendar.
+UID:cfa-level1-2026-registration_start-20260401@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:2026049
+SUMMARY:CFA L1 - CFA Level I - May Window
+DESCRIPTION:Official URL: https://cfainstitute.org\\nView more details on Global Exam Calendar.
+UID:cfa-level1-2026-exam_date-2026049@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260630
+SUMMARY:CFA L1 - May Results
+DESCRIPTION:Official URL: https://cfainstitute.org\\nView more details on Global Exam Calendar.
+UID:cfa-level1-2026-result-20260630@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260818
+SUMMARY:CFA L1 - CFA Level I - Aug Window
+DESCRIPTION:Official URL: https://cfainstitute.org\\nView more details on Global Exam Calendar.
+UID:cfa-level1-2026-exam_date-20260818@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260408
+SUMMARY:GMAT - GMAT Focus Edition
+DESCRIPTION:Official URL: https://mba.com/gmat\\nView more details on Global Exam Calendar.
+UID:gmat-2026-exam_date-20260408@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260506
+SUMMARY:GMAT - GMAT Focus Edition
+DESCRIPTION:Official URL: https://mba.com/gmat\\nView more details on Global Exam Calendar.
+UID:gmat-2026-exam_date-20260506@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260603
+SUMMARY:GMAT - GMAT Focus Edition
+DESCRIPTION:Official URL: https://mba.com/gmat\\nView more details on Global Exam Calendar.
+UID:gmat-2026-exam_date-20260603@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260410
+SUMMARY:GRE - GRE Test Day (CBT)
+DESCRIPTION:Official URL: https://ets.org/gre\\nView more details on Global Exam Calendar.
+UID:gre-general-2026-exam_date-20260410@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260515
+SUMMARY:GRE - GRE Test Day (CBT)
+DESCRIPTION:Official URL: https://ets.org/gre\\nView more details on Global Exam Calendar.
+UID:gre-general-2026-exam_date-20260515@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260620
+SUMMARY:GRE - GRE Test Day (CBT)
+DESCRIPTION:Official URL: https://ets.org/gre\\nView more details on Global Exam Calendar.
+UID:gre-general-2026-exam_date-20260620@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260411
+SUMMARY:IELTS - IELTS Academic - April
+DESCRIPTION:Official URL: https://ielts.org\\nView more details on Global Exam Calendar.
+UID:ielts-2026-exam_date-20260411@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260425
+SUMMARY:IELTS - IELTS General - April
+DESCRIPTION:Official URL: https://ielts.org\\nView more details on Global Exam Calendar.
+UID:ielts-2026-exam_date-20260425@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260509
+SUMMARY:IELTS - IELTS Academic - May
+DESCRIPTION:Official URL: https://ielts.org\\nView more details on Global Exam Calendar.
+UID:ielts-2026-exam_date-20260509@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260523
+SUMMARY:IELTS - IELTS General - May
+DESCRIPTION:Official URL: https://ielts.org\\nView more details on Global Exam Calendar.
+UID:ielts-2026-exam_date-20260523@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260613
+SUMMARY:IELTS - IELTS Academic - June
+DESCRIPTION:Official URL: https://ielts.org\\nView more details on Global Exam Calendar.
+UID:ielts-2026-exam_date-20260613@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260414
+SUMMARY:PMP - PMP CBT Available (Ongoing)
+DESCRIPTION:Official URL: https://www.pmi.org\\nView more details on Global Exam Calendar.
+UID:pmp-2026-exam_date-20260414@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260701
+SUMMARY:PMP - PMP CBT Available (Ongoing)
+DESCRIPTION:Official URL: https://www.pmi.org\\nView more details on Global Exam Calendar.
+UID:pmp-2026-exam_date-20260701@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20261001
+SUMMARY:PMP - PMP CBT Available (Ongoing)
+DESCRIPTION:Official URL: https://www.pmi.org\\nView more details on Global Exam Calendar.
+UID:pmp-2026-exam_date-20261001@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260418
+SUMMARY:TOEFL iBT - TOEFL iBT Test Day
+DESCRIPTION:Official URL: https://ets.org/toefl\\nView more details on Global Exam Calendar.
+UID:toefl-2026-exam_date-20260418@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260516
+SUMMARY:TOEFL iBT - TOEFL iBT Test Day
+DESCRIPTION:Official URL: https://ets.org/toefl\\nView more details on Global Exam Calendar.
+UID:toefl-2026-exam_date-20260516@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260620
+SUMMARY:TOEFL iBT - TOEFL iBT Test Day
+DESCRIPTION:Official URL: https://ets.org/toefl\\nView more details on Global Exam Calendar.
+UID:toefl-2026-exam_date-20260620@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260801
+SUMMARY:CAT - CAT 2026 Registration Opens
+DESCRIPTION:Official URL: https://iimcat.ac.in\\nView more details on Global Exam Calendar.
+UID:cat-2026-registration_start-20260801@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260915
+SUMMARY:CAT - Registration Closes
+DESCRIPTION:Official URL: https://iimcat.ac.in\\nView more details on Global Exam Calendar.
+UID:cat-2026-registration_end-20260915@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20261028
+SUMMARY:CAT - Admit Card Release
+DESCRIPTION:Official URL: https://iimcat.ac.in\\nView more details on Global Exam Calendar.
+UID:cat-2026-admit_card-20261028@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20261122
+SUMMARY:CAT - CAT 2026 Exam
+DESCRIPTION:Official URL: https://iimcat.ac.in\\nView more details on Global Exam Calendar.
+UID:cat-2026-exam_date-20261122@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20270110
+SUMMARY:CAT - Result Declaration
+DESCRIPTION:Official URL: https://iimcat.ac.in\\nView more details on Global Exam Calendar.
+UID:cat-2026-result-20270110@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20250901
+SUMMARY:GATE - Application Opens
+DESCRIPTION:Official URL: https://gate2026.iitd.ac.in\\nView more details on Global Exam Calendar.
+UID:gate-2026-registration_start-20250901@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20251010
+SUMMARY:GATE - Application Closes
+DESCRIPTION:Official URL: https://gate2026.iitd.ac.in\\nView more details on Global Exam Calendar.
+UID:gate-2026-registration_end-20251010@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260110
+SUMMARY:GATE - Admit Card Download
+DESCRIPTION:Official URL: https://gate2026.iitd.ac.in\\nView more details on Global Exam Calendar.
+UID:gate-2026-admit_card-20260110@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260201
+SUMMARY:GATE - GATE 2026 (Paper 1)
+DESCRIPTION:Official URL: https://gate2026.iitd.ac.in\\nView more details on Global Exam Calendar.
+UID:gate-2026-exam_date-20260201@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260202
+SUMMARY:GATE - GATE 2026 (Paper 2)
+DESCRIPTION:Official URL: https://gate2026.iitd.ac.in\\nView more details on Global Exam Calendar.
+UID:gate-2026-exam_date-20260202@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260319
+SUMMARY:GATE - Result Announced
+DESCRIPTION:Official URL: https://gate2026.iitd.ac.in\\nView more details on Global Exam Calendar.
+UID:gate-2026-result-20260319@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260301
+SUMMARY:JEE Main - Session 1 Registration Opens
+DESCRIPTION:Official URL: https://jeemain.nta.ac.in\\nView more details on Global Exam Calendar.
+UID:jee-main-2026-registration_start-20260301@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260331
+SUMMARY:JEE Main - Session 1 Registration Closes
+DESCRIPTION:Official URL: https://jeemain.nta.ac.in\\nView more details on Global Exam Calendar.
+UID:jee-main-2026-registration_end-20260331@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260415
+SUMMARY:JEE Main - Admit Card - Session 1
+DESCRIPTION:Official URL: https://jeemain.nta.ac.in\\nView more details on Global Exam Calendar.
+UID:jee-main-2026-admit_card-20260415@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260422
+SUMMARY:JEE Main - JEE Main Session 1
+DESCRIPTION:Official URL: https://jeemain.nta.ac.in\\nView more details on Global Exam Calendar.
+UID:jee-main-2026-exam_date-20260422@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260510
+SUMMARY:JEE Main - Session 1 Result
+DESCRIPTION:Official URL: https://jeemain.nta.ac.in\\nView more details on Global Exam Calendar.
+UID:jee-main-2026-result-20260510@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260715
+SUMMARY:JEE Main - JEE Main Session 2
+DESCRIPTION:Official URL: https://jeemain.nta.ac.in\\nView more details on Global Exam Calendar.
+UID:jee-main-2026-exam_date-20260715@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260801
+SUMMARY:JEE Main - Session 2 Result
+DESCRIPTION:Official URL: https://jeemain.nta.ac.in\\nView more details on Global Exam Calendar.
+UID:jee-main-2026-result-20260801@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260310
+SUMMARY:NEET UG - Registration Opens
+DESCRIPTION:Official URL: https://neet.nta.nic.in\\nView more details on Global Exam Calendar.
+UID:neet-ug-2026-registration_start-20260310@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260405
+SUMMARY:NEET UG - Registration Closes
+DESCRIPTION:Official URL: https://neet.nta.nic.in\\nView more details on Global Exam Calendar.
+UID:neet-ug-2026-registration_end-20260405@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260501
+SUMMARY:NEET UG - Admit Card Release
+DESCRIPTION:Official URL: https://neet.nta.nic.in\\nView more details on Global Exam Calendar.
+UID:neet-ug-2026-admit_card-20260501@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260517
+SUMMARY:NEET UG - NEET UG Exam Day
+DESCRIPTION:Official URL: https://neet.nta.nic.in\\nView more details on Global Exam Calendar.
+UID:neet-ug-2026-exam_date-20260517@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260614
+SUMMARY:NEET UG - Result Declaration
+DESCRIPTION:Official URL: https://neet.nta.nic.in\\nView more details on Global Exam Calendar.
+UID:neet-ug-2026-result-20260614@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260701
+SUMMARY:NEET UG - Counselling Begins
+DESCRIPTION:Official URL: https://neet.nta.nic.in\\nView more details on Global Exam Calendar.
+UID:neet-ug-2026-counselling-20260701@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260201
+SUMMARY:UPSC CSE - Notification Released
+DESCRIPTION:Official URL: https://upsc.gov.in\\nView more details on Global Exam Calendar.
+UID:upsc-cse-2026-registration_start-20260201@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260221
+SUMMARY:UPSC CSE - Last Date to Apply
+DESCRIPTION:Official URL: https://upsc.gov.in\\nView more details on Global Exam Calendar.
+UID:upsc-cse-2026-registration_end-20260221@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260425
+SUMMARY:UPSC CSE - Admit Card Download
+DESCRIPTION:Official URL: https://upsc.gov.in\\nView more details on Global Exam Calendar.
+UID:upsc-cse-2026-admit_card-20260425@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260524
+SUMMARY:UPSC CSE - Prelims Exam
+DESCRIPTION:Official URL: https://upsc.gov.in\\nView more details on Global Exam Calendar.
+UID:upsc-cse-2026-exam_date-20260524@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260715
+SUMMARY:UPSC CSE - Prelims Result
+DESCRIPTION:Official URL: https://upsc.gov.in\\nView more details on Global Exam Calendar.
+UID:upsc-cse-2026-result-20260715@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260920
+SUMMARY:UPSC CSE - Mains Exam
+DESCRIPTION:Official URL: https://upsc.gov.in\\nView more details on Global Exam Calendar.
+UID:upsc-cse-2026-exam_date-20260920@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20270401
+SUMMARY:UPSC CSE - Final Result
+DESCRIPTION:Official URL: https://upsc.gov.in\\nView more details on Global Exam Calendar.
+UID:upsc-cse-2026-result-20270401@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260315
+SUMMARY:JLPT - July Session Registration
+DESCRIPTION:Official URL: https://jlpt.jp\\nView more details on Global Exam Calendar.
+UID:jlpt-2026-registration_start-20260315@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260415
+SUMMARY:JLPT - Registration Ends
+DESCRIPTION:Official URL: https://jlpt.jp\\nView more details on Global Exam Calendar.
+UID:jlpt-2026-registration_end-20260415@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260705
+SUMMARY:JLPT - JLPT July Session
+DESCRIPTION:Official URL: https://jlpt.jp\\nView more details on Global Exam Calendar.
+UID:jlpt-2026-exam_date-20260705@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260901
+SUMMARY:JLPT - July Results
+DESCRIPTION:Official URL: https://jlpt.jp\\nView more details on Global Exam Calendar.
+UID:jlpt-2026-result-20260901@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20261206
+SUMMARY:JLPT - JLPT December Session
+DESCRIPTION:Official URL: https://jlpt.jp\\nView more details on Global Exam Calendar.
+UID:jlpt-2026-exam_date-20261206@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260820
+SUMMARY:CSAT (Suneung) - Registration Opens
+DESCRIPTION:Official URL: https://www.kice.re.kr\\nView more details on Global Exam Calendar.
+UID:csat-2026-registration_start-20260820@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260910
+SUMMARY:CSAT (Suneung) - Registration Closes
+DESCRIPTION:Official URL: https://www.kice.re.kr\\nView more details on Global Exam Calendar.
+UID:csat-2026-registration_end-20260910@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20261119
+SUMMARY:CSAT (Suneung) - CSAT Exam Day
+DESCRIPTION:Official URL: https://www.kice.re.kr\\nView more details on Global Exam Calendar.
+UID:csat-2026-exam_date-20261119@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20261209
+SUMMARY:CSAT (Suneung) - Score Release
+DESCRIPTION:Official URL: https://www.kice.re.kr\\nView more details on Global Exam Calendar.
+UID:csat-2026-result-20261209@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260115
+SUMMARY:WASSCE - Registration Opens
+DESCRIPTION:Official URL: https://www.waecng.org\\nView more details on Global Exam Calendar.
+UID:wassce-2026-registration_start-20260115@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260315
+SUMMARY:WASSCE - Registration Closes
+DESCRIPTION:Official URL: https://www.waecng.org\\nView more details on Global Exam Calendar.
+UID:wassce-2026-registration_end-20260315@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260420
+SUMMARY:WASSCE - WASSCE Exams Begin
+DESCRIPTION:Official URL: https://www.waecng.org\\nView more details on Global Exam Calendar.
+UID:wassce-2026-exam_date-20260420@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260630
+SUMMARY:WASSCE - WASSCE Exams End
+DESCRIPTION:Official URL: https://www.waecng.org\\nView more details on Global Exam Calendar.
+UID:wassce-2026-exam_date-20260630@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260815
+SUMMARY:WASSCE - Results Released
+DESCRIPTION:Official URL: https://www.waecng.org\\nView more details on Global Exam Calendar.
+UID:wassce-2026-result-20260815@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260728
+SUMMARY:UBE - UBE July Session Day 1
+DESCRIPTION:Official URL: https://ncbex.org\\nView more details on Global Exam Calendar.
+UID:bar-exam-usa-2026-exam_date-20260728@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260729
+SUMMARY:UBE - UBE July Session Day 2
+DESCRIPTION:Official URL: https://ncbex.org\\nView more details on Global Exam Calendar.
+UID:bar-exam-usa-2026-exam_date-20260729@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20261015
+SUMMARY:UBE - July Results
+DESCRIPTION:Official URL: https://ncbex.org\\nView more details on Global Exam Calendar.
+UID:bar-exam-usa-2026-result-20261015@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260404
+SUMMARY:LSAT - LSAT April 2026
+DESCRIPTION:Official URL: https://lsac.org\\nView more details on Global Exam Calendar.
+UID:lsat-2026-exam_date-20260404@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260425
+SUMMARY:LSAT - April Scores
+DESCRIPTION:Official URL: https://lsac.org\\nView more details on Global Exam Calendar.
+UID:lsat-2026-result-20260425@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260606
+SUMMARY:LSAT - LSAT June 2026
+DESCRIPTION:Official URL: https://lsac.org\\nView more details on Global Exam Calendar.
+UID:lsat-2026-exam_date-20260606@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260627
+SUMMARY:LSAT - June Scores
+DESCRIPTION:Official URL: https://lsac.org\\nView more details on Global Exam Calendar.
+UID:lsat-2026-result-20260627@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260417
+SUMMARY:MCAT - MCAT April Test Date
+DESCRIPTION:Official URL: https://students-residents.aamc.org/mcat\\nView more details on Global Exam Calendar.
+UID:mcat-2026-exam_date-20260417@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260522
+SUMMARY:MCAT - MCAT May Test Date
+DESCRIPTION:Official URL: https://students-residents.aamc.org/mcat\\nView more details on Global Exam Calendar.
+UID:mcat-2026-exam_date-20260522@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260619
+SUMMARY:MCAT - MCAT June Test Date
+DESCRIPTION:Official URL: https://students-residents.aamc.org/mcat\\nView more details on Global Exam Calendar.
+UID:mcat-2026-exam_date-20260619@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260717
+SUMMARY:MCAT - MCAT July Test Date
+DESCRIPTION:Official URL: https://students-residents.aamc.org/mcat\\nView more details on Global Exam Calendar.
+UID:mcat-2026-exam_date-20260717@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260314
+SUMMARY:SAT - SAT March 2026
+DESCRIPTION:Official URL: https://collegeboard.org\\nView more details on Global Exam Calendar.
+UID:sat-2026-exam_date-20260314@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260328
+SUMMARY:SAT - March Scores Released
+DESCRIPTION:Official URL: https://collegeboard.org\\nView more details on Global Exam Calendar.
+UID:sat-2026-result-20260328@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260502
+SUMMARY:SAT - SAT May 2026
+DESCRIPTION:Official URL: https://collegeboard.org\\nView more details on Global Exam Calendar.
+UID:sat-2026-exam_date-20260502@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260516
+SUMMARY:SAT - May Scores Released
+DESCRIPTION:Official URL: https://collegeboard.org\\nView more details on Global Exam Calendar.
+UID:sat-2026-result-20260516@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260606
+SUMMARY:SAT - SAT June 2026
+DESCRIPTION:Official URL: https://collegeboard.org\\nView more details on Global Exam Calendar.
+UID:sat-2026-exam_date-20260606@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260620
+SUMMARY:SAT - June Scores Released
+DESCRIPTION:Official URL: https://collegeboard.org\\nView more details on Global Exam Calendar.
+UID:sat-2026-result-20260620@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260829
+SUMMARY:SAT - SAT August 2026
+DESCRIPTION:Official URL: https://collegeboard.org\\nView more details on Global Exam Calendar.
+UID:sat-2026-exam_date-20260829@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260301
+SUMMARY:USMLE Step 1 - Step 1 CBT (Year-Round)
+DESCRIPTION:Official URL: https://www.usmle.org\\nView more details on Global Exam Calendar.
+UID:usmle-step1-2026-exam_date-20260301@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260601
+SUMMARY:USMLE Step 1 - Step 1 CBT (Year-Round)
+DESCRIPTION:Official URL: https://www.usmle.org\\nView more details on Global Exam Calendar.
+UID:usmle-step1-2026-exam_date-20260601@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260901
+SUMMARY:USMLE Step 1 - Step 1 CBT (Year-Round)
+DESCRIPTION:Official URL: https://www.usmle.org\\nView more details on Global Exam Calendar.
+UID:usmle-step1-2026-exam_date-20260901@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20261026
+SUMMARY:Matric NSC - NSC Examinations Begin
+DESCRIPTION:Official URL: https://www.education.gov.za\\nView more details on Global Exam Calendar.
+UID:matric-sa-2026-exam_date-20261026@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20261204
+SUMMARY:Matric NSC - NSC Examinations End
+DESCRIPTION:Official URL: https://www.education.gov.za\\nView more details on Global Exam Calendar.
+UID:matric-sa-2026-exam_date-20261204@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20270119
+SUMMARY:Matric NSC - Matric Results Day
+DESCRIPTION:Official URL: https://www.education.gov.za\\nView more details on Global Exam Calendar.
+UID:matric-sa-2026-result-20270119@globalexamcalendar
+END:VEVENT
+END:VCALENDAR

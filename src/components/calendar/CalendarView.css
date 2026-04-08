@@ -1,5 +1,13 @@
 /* ─── Calendar Grid ─── */
+.cal-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    /* Optional: hide scrollbars for cleaner aesthetic but keep functionality */
+    scrollbar-width: thin;
+}
+
 .cal-grid {
+    min-width: 650px;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 1px;
@@ -18,6 +26,7 @@
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--muted);
+    min-width: 0;
 }
 
 .cal-dow.weekend {
@@ -31,6 +40,7 @@
     transition: background 0.15s;
     position: relative;
     cursor: default;
+    min-width: 0;
 }
 
 .cal-day:hover {
@@ -132,6 +142,12 @@
     }
 
     .ep-name {
-        display: none;
+        font-size: 0.55rem;
+        letter-spacing: -0.02em;
+    }
+
+    .event-pill {
+        padding: 0.1rem 0.2rem;
+        gap: 0.15rem;
     }
 }

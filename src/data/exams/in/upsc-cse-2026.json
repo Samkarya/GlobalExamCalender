@@ -1,0 +1,59 @@
+{
+  "id": "upsc-cse-2026",
+  "name": "Union Public Service Commission Civil Services Examination",
+  "short_name": "UPSC CSE",
+  "country": "India",
+  "country_code": "IN",
+  "region": "Asia",
+  "category": "competitive",
+  "conducting_body": "Union Public Service Commission",
+  "frequency": "annual",
+  "official_url": "https://upsc.gov.in",
+  "tags": [
+    "government",
+    "civil services",
+    "ias",
+    "ips"
+  ],
+  "eligibility": "Indian citizen, Graduate degree, Age 21-32",
+  "dates": [
+    {
+      "type": "registration_start",
+      "date": "2026-02-01",
+      "label": "Notification Released"
+    },
+    {
+      "type": "registration_end",
+      "date": "2026-02-21",
+      "label": "Last Date to Apply"
+    },
+    {
+      "type": "admit_card",
+      "date": "2026-04-25",
+      "label": "Admit Card Download"
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-05-24",
+      "label": "Prelims Exam"
+    },
+    {
+      "type": "result",
+      "date": "2026-07-15",
+      "label": "Prelims Result",
+      "tentative": true
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-09-20",
+      "label": "Mains Exam",
+      "tentative": true
+    },
+    {
+      "type": "result",
+      "date": "2027-04-01",
+      "label": "Final Result",
+      "tentative": true
+    }
+  ]
+}

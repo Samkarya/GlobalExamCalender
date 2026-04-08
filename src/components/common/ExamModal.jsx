@@ -44,10 +44,10 @@ export default function ExamModal() {
     const saved = isInPlanner(exam.id);
 
     return (
-        <div className={`modal-overlay ${exam ? 'open' : ''}`} onClick={handleOverlayClick}>
-            <div className="modal" role="dialog" aria-modal="true">
+        <div className={`modal-overlay ${exam ? 'open' : ''}`} onClick={handleOverlayClick} aria-hidden={!exam}>
+            <div className="modal" role="dialog" aria-modal="true" aria-labelledby="modal-exam-title">
                 <div className="modal-header">
-                    <button className="modal-close" onClick={closeModal} aria-label="Close modal">
+                    <button className="modal-close" onClick={closeModal} aria-label="Close exam details">
                         <X size={16} />
                     </button>
 
@@ -66,7 +66,7 @@ export default function ExamModal() {
                         </div>
                     )}
 
-                    <div className="modal-exam-name">{exam.name}</div>
+                    <h2 id="modal-exam-title" className="modal-exam-name">{exam.name}</h2>
 
                     <div className="modal-meta">
                         <span className="cat-badge" style={{ background: `${catColor}22`, color: catColor }}>
@@ -144,8 +144,9 @@ export default function ExamModal() {
                     <button
                         className={`bookmark-btn ${saved ? 'saved' : ''}`}
                         onClick={() => togglePlanner(exam.id)}
+                        aria-pressed={saved}
                     >
-                        {saved ? <StarOff size={14} /> : <Star size={14} />}
+                        {saved ? <StarOff size={14} aria-hidden="true" /> : <Star size={14} aria-hidden="true" />}
                         {saved ? 'Remove from Planner' : 'Add to My Planner'}
                     </button>
                 </div>

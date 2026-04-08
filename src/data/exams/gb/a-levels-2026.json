@@ -1,0 +1,37 @@
+{
+  "id": "a-levels-2026",
+  "name": "GCE Advanced Level Examinations",
+  "short_name": "A-Levels",
+  "country": "UK",
+  "country_code": "GB",
+  "region": "Europe",
+  "category": "academic",
+  "conducting_body": "AQA / Edexcel / OCR",
+  "frequency": "annual",
+  "official_url": "https://www.aqa.org.uk",
+  "tags": [
+    "a-levels",
+    "gcse",
+    "uk",
+    "university",
+    "secondary"
+  ],
+  "eligibility": "Year 13 students in England, Wales, and Northern Ireland",
+  "dates": [
+    {
+      "type": "exam_date",
+      "date": "2026-05-11",
+      "label": "A-Level Exams Begin"
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-06-26",
+      "label": "A-Level Exams End"
+    },
+    {
+      "type": "result",
+      "date": "2026-08-13",
+      "label": "A-Level Results Day"
+    }
+  ]
+}

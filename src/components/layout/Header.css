@@ -23,6 +23,7 @@
   gap: 0.6rem;
   white-space: nowrap;
 }
+
 .logo em {
   font-style: italic;
   margin-left: 0.15rem;
@@ -38,8 +39,17 @@
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.6; transform: scale(0.8); }
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.6;
+    transform: scale(0.8);
+  }
 }
 
 /* ─── Buttons ─── */
@@ -58,6 +68,7 @@
   gap: 0.4rem;
   text-decoration: none;
 }
+
 .btn-outline:hover {
   background: var(--surface2);
   border-color: var(--accent);
@@ -79,6 +90,7 @@
   font-weight: 500;
   text-decoration: none;
 }
+
 .btn-accent:hover {
   filter: brightness(1.1);
   transform: translateY(-1px);
@@ -107,6 +119,7 @@
   padding: 3px;
   gap: 2px;
 }
+
 .view-btn {
   background: none;
   border: none;
@@ -122,10 +135,12 @@
   align-items: center;
   gap: 0.4rem;
 }
+
 .view-btn.active {
   background: var(--border2);
   color: var(--text);
 }
+
 .view-btn:hover:not(.active) {
   color: var(--text);
 }
@@ -139,6 +154,7 @@
   color: var(--muted);
   font-family: 'DM Mono', monospace;
 }
+
 .stat-pill {
   display: flex;
   align-items: center;
@@ -148,6 +164,7 @@
   padding: 0.25rem 0.7rem;
   border-radius: 20px;
 }
+
 .stat-pill span {
   color: var(--text);
   font-weight: 500;
@@ -165,7 +182,7 @@
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 950px) {
   .app-header {
     padding: 0 1rem;
     flex-wrap: wrap;
@@ -173,15 +190,18 @@
     padding-top: 10px;
     padding-bottom: 10px;
   }
+
   .view-toggle {
     order: 3;
     width: 100%;
     justify-content: center;
     margin-top: 10px;
   }
+
   .mobile-menu-btn {
     display: flex;
   }
+
   .desktop-only {
     display: none;
   }

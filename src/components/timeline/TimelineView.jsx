@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useExams } from '../../context/ExamContext';
 import { useUI } from '../../context/UIContext';
 import { EVENT_TYPE_COLORS, EVENT_TYPE_LABELS, CATEGORY_COLORS } from '../../constants';
@@ -7,9 +8,16 @@ import './TimelineView.css';
 
 export default function TimelineView() {
     const { filteredEvents } = useExams();
-    const { openModal } = useUI();
+    const { openModal, currentDate } = useUI();
 
-    if (!filteredEvents.length) {
+    const currentMonthEvents = useMemo(() => {
+        const year = currentDate.getFullYear();
+        const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+        const prefix = `${year}-${month}`;
+        return filteredEvents.filter((ev) => ev.date.startsWith(prefix));
+    }, [filteredEvents, currentDate]);
+
+    if (!currentMonthEvents.length) {
         return (
             <div className="empty-state">
                 <Inbox size={48} strokeWidth={1} />
@@ -19,7 +27,7 @@ export default function TimelineView() {
         );
     }
 
-    const visible = filteredEvents.slice(0, 60);
+    const visible = currentMonthEvents.slice(0, 60);
 
     return (
         <div className="timeline-wrap">
@@ -56,7 +64,7 @@ export default function TimelineView() {
                                     <span><MapPin size={12} /> {ev.exam.country}</span>
                                     <span
                                         className="cat-badge"
-                                        style={{ background: `${catColor}22`, color: catColor }}
+                                        style={{ background: `${catColor}22`, color: 'var(--text)' }}
                                     >
                                         {ev.exam.category}
                                     </span>
@@ -64,7 +72,7 @@ export default function TimelineView() {
                             </div>
                             <div
                                 className="event-type-badge"
-                                style={{ background: `${typeColor}22`, color: typeColor }}
+                                style={{ background: `${typeColor}22`, color: 'var(--text)' }}
                             >
                                 {EVENT_TYPE_LABELS[ev.type]}
                             </div>

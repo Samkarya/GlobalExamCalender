@@ -8,19 +8,27 @@ import './ListView.css';
 
 export default function ListView() {
     const { filteredEvents } = useExams();
-    const { openModal } = useUI();
+    const { openModal, currentDate } = useUI();
+
+    // Filter events to only match the currently selected month
+    const currentMonthEvents = useMemo(() => {
+        const year = currentDate.getFullYear();
+        const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+        const prefix = `${year}-${month}`;
+        return filteredEvents.filter((ev) => ev.date.startsWith(prefix));
+    }, [filteredEvents, currentDate]);
 
     // Group events by date
     const groupedByDate = useMemo(() => {
         const groups = {};
-        filteredEvents.forEach((ev) => {
+        currentMonthEvents.forEach((ev) => {
             if (!groups[ev.date]) groups[ev.date] = [];
             groups[ev.date].push(ev);
         });
         return Object.entries(groups).sort((a, b) => a[0].localeCompare(b[0]));
-    }, [filteredEvents]);
+    }, [currentMonthEvents]);
 
-    if (!filteredEvents.length) {
+    if (!currentMonthEvents.length) {
         return (
             <div className="empty-state">
                 <Inbox size={48} strokeWidth={1} />
