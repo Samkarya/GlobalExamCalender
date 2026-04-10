@@ -1,0 +1,40 @@
+{
+  "id": "cuet-ug",
+  "name": "Common University Entrance Test (Undergraduate)",
+  "short_name": "CUET UG",
+  "country": "India",
+  "country_code": "IN",
+  "region": "Asia",
+  "category": "entrance",
+  "conducting_body": "National Testing Agency (NTA)",
+  "frequency": "annual",
+  "official_url": "https://cuet.nta.nic.in/",
+  "tags": ["undergraduate", "central universities", "india", "admissions"],
+  "eligibility": "Passed or appearing in Class 12 or equivalent qualification from a recognized board.",
+  "dates": [
+    {
+      "type": "registration_start",
+      "date": "2026-01-03",
+      "label": "Application Window Opens",
+      "tentative": false
+    },
+    {
+      "type": "registration_end",
+      "date": "2026-02-26",
+      "label": "Re-opened Registration Deadline",
+      "tentative": false
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-05-11",
+      "label": "CUET UG Exam Window Starts",
+      "tentative": true
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-05-31",
+      "label": "CUET UG Exam Window Ends",
+      "tentative": true
+    }
+  ]
+}

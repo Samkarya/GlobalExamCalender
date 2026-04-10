@@ -337,6 +337,30 @@ DESCRIPTION:Official URL: https://iimcat.ac.in\\nView more details on Global Exa
 UID:cat-exam-result-20261221@globalexamcalendar
 END:VEVENT
 BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260103
+SUMMARY:CUET UG - Application Window Opens
+DESCRIPTION:Official URL: https://cuet.nta.nic.in/\\nView more details on Global Exam Calendar.
+UID:cuet-ug-registration_start-20260103@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260226
+SUMMARY:CUET UG - Re-opened Registration Deadline
+DESCRIPTION:Official URL: https://cuet.nta.nic.in/\\nView more details on Global Exam Calendar.
+UID:cuet-ug-registration_end-20260226@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260511
+SUMMARY:CUET UG - CUET UG Exam Window Starts
+DESCRIPTION:Official URL: https://cuet.nta.nic.in/\\nView more details on Global Exam Calendar.
+UID:cuet-ug-exam_date-20260511@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20260531
+SUMMARY:CUET UG - CUET UG Exam Window Ends
+DESCRIPTION:Official URL: https://cuet.nta.nic.in/\\nView more details on Global Exam Calendar.
+UID:cuet-ug-exam_date-20260531@globalexamcalendar
+END:VEVENT
+BEGIN:VEVENT
 DTSTART;VALUE=DATE:20250825
 SUMMARY:GATE - Online Registration Opens
 DESCRIPTION:Official URL: https://gate2026.iitg.ac.in\\nView more details on Global Exam Calendar.
