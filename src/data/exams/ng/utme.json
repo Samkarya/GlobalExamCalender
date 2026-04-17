@@ -1,0 +1,51 @@
+{
+  "id": "utme",
+  "name": "Unified Tertiary Matriculation Examination",
+  "short_name": "UTME",
+  "country": "Nigeria",
+  "country_code": "NG",
+  "region": "Africa",
+  "category": "entrance",
+  "conducting_body": "Joint Admissions and Matriculation Board (JAMB)",
+  "frequency": "annual",
+  "official_url": "https://www.jamb.gov.ng",
+  "tags": [
+    "nigeria",
+    "university",
+    "admission",
+    "jamb"
+  ],
+  "eligibility": "Candidates must have obtained five (5) credit passes in relevant subjects including English Language in SSCE/GCE/NECO/NABTEB.",
+  "dates": [
+    {
+      "type": "registration_start",
+      "date": "2026-01-15",
+      "label": "Registration Opens",
+      "tentative": false
+    },
+    {
+      "type": "registration_end",
+      "date": "2026-02-26",
+      "label": "Registration Closes",
+      "tentative": false
+    },
+    {
+      "type": "admit_card",
+      "date": "2026-04-10",
+      "label": "Examination Slip Printing",
+      "tentative": true
+    },
+    {
+      "type": "exam_date",
+      "date": "2026-04-19",
+      "label": "UTME Main Examination Start",
+      "tentative": false
+    },
+    {
+      "type": "result",
+      "date": "2026-05-05",
+      "label": "Release of Results",
+      "tentative": true
+    }
+  ]
+}
